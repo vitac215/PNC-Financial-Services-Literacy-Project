@@ -41,6 +41,7 @@ app.use(function(req, res) {
  */
 var httpServer = require('http').createServer(app);
 var sio =require('socket.io')(httpServer);
+// var io = require('socket.io').listen(httpServer)  // made by vita
 
 //The server socket.io code is in the socketio directory.
 require('./socketio/serverSocket.js').init(sio);
