@@ -22,7 +22,9 @@ exports.init = function(io) {
 		socket.on('chooseGameAndCategory', function (data) {
 			if(data.player == "parent"){
 				parentID = socket.id;
-				io.sockets.connected[parentID].emit('choseCategory');
+				// Wait until the teen finished chosing a game
+				io.sockets.connected[parentID].emit('waitForTeen');
+				//io.sockets.connected[parentID].emit('choseCategory');
 			} else {
 				teenID = socket.id;
 				io.sockets.connected[teenID].emit('choseGame');
@@ -32,6 +34,7 @@ exports.init = function(io) {
 
 		socket.on('gameSelected', function (data) {
 			game = data.game;
+			io.sockets.connected[parentID].emit('choseCategory');
 		});
 
 		socket.on('categorySelected', function (data) {
@@ -46,7 +49,7 @@ exports.init = function(io) {
 			digitArray = cost.toString(10).split("").map(function(t){return parseInt(t)});
 			missingId = Math.floor((Math.random() * (digitArray.length-1)) + 1);
 
-			io.sockets.connected[teenID].emit('startGame', {digits: digitArray, missing: missingId, per: per, category: category, item: item});
+			io.sockets.connected[teenID].emit('startMDGame', {digits: digitArray, missing: missingId, per: per, category: category, item: item});
 			io.sockets.connected[parentID].emit('waitForTeen');
 		});
 

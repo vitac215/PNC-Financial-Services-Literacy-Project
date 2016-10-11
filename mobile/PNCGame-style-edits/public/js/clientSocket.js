@@ -48,11 +48,12 @@ $(document).ready(function(){
     });
 
     socket.on('waitForTeen', function(data) {
+        $('.initialPage').fadeOut();
     	$('.inputInformation').fadeOut();
     	$('.waitingForTeen').fadeIn();
     });
 
-    socket.on('startGame', function(data) {
+    socket.on('startMDGame', function(data) {
     	$('#categoryName').append(data.category);
         $('#itemName').append(data.item);
     	$('#perValue').append(data.per);
