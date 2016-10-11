@@ -54,10 +54,11 @@
 			</div>
 		</div>
 
+		<!-- wait mesaages -->
 		<div class="container waitingForParent">
 			<div class="row">
 			  <div class="col-xs-12 col-md-4 col-centered">
-			  	<h3>Waiting for the parent to input information</h3>
+			  	<h3>Waiting for the parent to choose the game or input information</h3>
 			  </div>
 			</div>
 		</div>
@@ -69,6 +70,7 @@
 			  </div>
 			</div>
 		</div>
+
 
 		<div class="container inputInformation">
 			<div class="row">
@@ -117,39 +119,74 @@
 			  	</h2>	
 			  	<button id="guess" class="btn btn-info btn-lg" type="button">Guess</button>
 
-			  	<div class="modal fade teenWin" tabindex="-1" role="dialog">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-								<h4 class="modal-title">Correct</h4>
-							</div>
-							<div class="modal-body">
-								<p>+1 Point for teen</p>
-								<p>You've won the game</p>
-							</div>
-						</div><!-- /.modal-content -->
-					</div><!-- /.modal-dialog -->
-				</div><!-- /.modal -->
+			  </div>
+			</div>
+		</div><!-- missingDigitScreen -->
 
-				<div class="modal fade parentWin" tabindex="-1" role="dialog">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-								<h4 class="modal-title">Wrong</h4>
-							</div>
-							<div class="modal-body">
-								<p>+1 Point for parent</p>
-								<p>You've lost the game</p>
-							</div>
-						</div><!-- /.modal-content -->
-					</div><!-- /.modal-dialog -->
-				</div><!-- /.modal -->
+
+		<!-- bonkers -->
+		<div class="container bonkersScreen">
+			<div class="row">
+			  <div class="col-xs-12 col-md-4 col-centered">
+			  	<h2>Bonkers</h2><br>
+			  	<div class="gameDescription">
+				  	<h5 id="categoryName">Category: </h5>
+				  	<h5 id="itemName">Item: </h5>
+				  	<h5 id="perValue">Guess the Cost: Cost payment per </h5>
+				  	<h5>Directions: Indicate where the price is HIGHER or LOWER</h5>
+			  	</div><br>
+			  	<h2>
+			  		<div class = digitBox>
+			  			<div id="higherButton">
+			  			Higher (to be replaced with upper arrow later)
+			  			</div>
+				  		<div id="bonkersDigitBox">
+				  			somenumber
+				  		</div>
+			  			<div id="lowerButton">
+			  			Lower (to be replaced with lower arrow later)
+			  			</div>
+			  		</div>
+
+			  		<div class = choices></div>
+			  	</h2>	
+			  	<button id="guess" class="btn btn-info btn-lg" type="button">Guess</button>
 
 			  </div>
 			</div>
-		</div>
+		</div><!-- missingDigitScreen -->
+
+
+		<!-- win modal -->
+	  	<div class="modal fade teenWin" tabindex="-1" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Correct</h4>
+					</div>
+					<div class="modal-body">
+						<p>+1 Point for teen</p>
+						<p>You've won the game</p>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
+		<div class="modal fade parentWin" tabindex="-1" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Wrong</h4>
+					</div>
+					<div class="modal-body">
+						<p>+1 Point for parent</p>
+						<p>You've lost the game</p>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
 
 
 
