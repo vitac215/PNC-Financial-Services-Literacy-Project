@@ -46,7 +46,7 @@ exports.init = function(io) {
 			digitArray = cost.toString(10).split("").map(function(t){return parseInt(t)});
 			missingId = Math.floor((Math.random() * (digitArray.length-1)) + 1);
 
-			io.sockets.connected[teenID].emit('startGame', {digits: digitArray, missing: missingId, per: per, category: category});
+			io.sockets.connected[teenID].emit('startGame', {digits: digitArray, missing: missingId, per: per, category: category, item: item});
 			io.sockets.connected[parentID].emit('waitForTeen');
 		});
 

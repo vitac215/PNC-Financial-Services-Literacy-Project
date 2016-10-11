@@ -47,6 +47,7 @@ $(document).ready(function(){
 
     socket.on('startGame', function(data) {
     	$('#categoryName').append(data.category);
+        $('#itemName').append(data.item);
     	$('#perValue').append(data.per);
     	var missingID = data.missing;
     	var digitArray = data.digits;
