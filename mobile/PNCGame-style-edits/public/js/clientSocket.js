@@ -33,11 +33,18 @@ $(document).ready(function(){
 		socket.emit('categorySelected', {category: "home"});  
     });
 
+
     $('#costSubmit').click(function () {
-    	var item =  $('#item :selected').text();
-    	var cost = $('#cost').val();
-    	var per = $("input[name=per]:checked").val();
-    	socket.emit('saveCost', {item: item, cost: cost, per: per});
+        var cost = parseInt($('#cost').val());
+        // Validate the format of the cost input
+        if (isNaN(cost)) {
+            alert("Please enter the cost in correct format");
+        }
+        else {
+            var item =  $('#item :selected').text();
+            var per = $("input[name=per]:checked").val();
+            socket.emit('saveCost', {item: item, cost: cost, per: per});
+        }
     });
 
     socket.on('waitForTeen', function(data) {
