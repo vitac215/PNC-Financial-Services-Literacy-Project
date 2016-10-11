@@ -106,6 +106,11 @@ $(document).ready(function(){
 	});
 
 
+    // A function to hide games other than the chosen one
+    function hideGame(chosen_game) {
+        
+    }
+
 
 
 
