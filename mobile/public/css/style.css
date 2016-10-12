@@ -1,0 +1,40 @@
+/* Initially set all the HTML divs to display: none and then display them one by one */
+.spinGame, .spinCategory, .waitingForParent, .waitingForTeen, .inputInformation, .missingDigitScreen, .bonkersScreen, .balanceScreen {
+	display: none;
+}
+
+.teenWin, .parentWin, .wrongCode, .roomExists {
+	display: none;
+}
+
+#missingDigitList li {
+    list-style-type: none;
+    display: inline;
+}
+
+/* Center everything in the column */
+.col-centered {
+    float: none;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.playerSelect {
+	text-align: left;
+	margin: 10px 140px;
+}
+
+.spinGame button, .spinCategory button {
+	margin: 20px;
+}
+
+#categorySelect {
+	text-align: left;
+	margin: 70px auto;
+	width: 250px;
+}
+
+.gameDescription {
+	text-align: left;
+}
+
