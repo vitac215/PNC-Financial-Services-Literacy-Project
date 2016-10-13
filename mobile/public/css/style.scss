@@ -1,0 +1,67 @@
+/* Initially set all the HTML divs to display: none and then display them one by one */
+$desc-color: rgba(255,255,255, 0.8);
+
+.spinGame, .spinCategory, .waitingForParent, .waitingForTeen, .inputInformation, .missingDigitScreen, .balanceScreen, .initialPage {
+	display: none;
+}
+
+.teenWin, .parentWin, .wrongCode, .roomExists {
+	display: none;
+}
+.gameTitle {
+  padding: 1.5em;
+}
+
+.container {
+  height: 100vh;
+  padding: 0;
+}
+
+.background-fan{
+  background-image: url("../images/background.png");
+  background-position: left top;
+  background-size: 100% auto;
+}
+.gameDescription{
+  background-color: $desc-color;
+  padding: 1em;
+}
+.bonkers-counter-div{
+  width: 30%;
+  margin:auto;
+}
+
+.counter-arrow{fill: #10528F; stroke: white;}
+.counter-arrow:hover{fill: #D82767; stroke: white}
+.counter-box{fill: #F9C2DE; stroke: white}
+
+#missingDigitList li {
+    list-style-type: none;
+    display: inline;
+}
+
+/* Center everything in the column */
+.col-centered {
+    float: none;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.playerSelect {
+	text-align: left;
+	margin: 10px 140px;
+}
+
+.spinGame button, .spinCategory button {
+	margin: 20px;
+}
+
+#categorySelect {
+	text-align: left;
+	margin: 70px auto;
+	width: 250px;
+}
+
+.gameDescription {
+	text-align: left;
+}

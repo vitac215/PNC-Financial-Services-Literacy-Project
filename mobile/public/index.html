@@ -1,8 +1,8 @@
 <html>
-	<head>    
+	<head>
 		<meta name="viewport" content="user-scalable=no,initial-scale=1.0,maximum-scale=1.0" />
-		<script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>  
-		<script type="text/javascript" src="/js/bootstrap.min.js"></script>  
+		<script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="/js/bootstrap.min.js"></script>
 		<!-- Notice that socket.io adds a path to its client-side js that is not in /public -->
 		<script src="/socket.io/socket.io.js"></script>
 		<!-- This is my example client-side javascript that uses socket.io -->
@@ -28,7 +28,7 @@
 				</div>
 				<button id="create" class="btn btn-info btn-lg" type="button">Create Game</button>
 				<button id="join" class="btn btn-info btn-lg" type="button">Join Game</button>
-				
+
 				<div class="modal fade wrongCode" tabindex="-1" role="dialog">
 					<div class="modal-dialog">
 						<div class="modal-content">
@@ -112,7 +112,7 @@
 					</select><br><br>
 
 					Cost: <input id="cost" type="text" name="cost"><br><br>
-					Per: 
+					Per:
 					<input type="radio" name="per" value="week" checked> Week<br>
 					<input type="radio" name="per" value="month"> Month<br>
 					<input type="radio" name="per" value="year"> Year <br><br>
@@ -140,7 +140,7 @@
 			  		</div>
 
 			  		<div class = choices></div>
-			  	</h2>	
+			  	</h2>
 			  	<button id="guess" class="btn btn-info btn-lg" type="button">Guess</button>
 
 			  	<div class="modal fade teenWin" tabindex="-1" role="dialog">
@@ -177,19 +177,38 @@
 			</div>
 		</div>
 
-		<div class="container bonkersScreen">
+		<div class="container bonkersScreen background-fan">
 			<div class="row">
 			  <div class="col-xs-12 col-md-4 col-centered">
-			  	<h2>Bonkers</h2><br>
+
+					<div class="gameTitle">
+						<img src="images/bonkers-heading.png" alt="Bonkers Title" width="100%">
+					</div>
+
 			  	<div class="gameDescription">
 				  	<h5 id="categoryNameBonkers">Category: </h5>
 				  	<h5 id="perValueBonkers">Guess the Cost: Cost payment per </h5>
 				  	<h5>Directions: Indicate where the price is HIGHER or LOWER</h5>
 			  	</div><br>
-			  	<h2 id="bonkersNumber"></h2>
+
+					<div class="bonkers-counter-div">
+						<svg class="bonkers-counter" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70.25 79.73">
+						  <defs>
+						    <style>.cls-1{fill:#f9c2de;stroke:#d82767;stroke-miterlimit:10;stroke-width:1.12px;}.cls-2{font-size:12px;font-family:OpenSans, Open Sans;}</style>
+						  </defs><title>counter_2</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1">
+						  <polygon class="counter-arrow" points="2.59 18.2 34.5 0.63 67.98 18.26 2.59 18.2"/>
+						  <rect class="counter-box" x="2.17" y="25.25" width="65.82" height="29.18" rx="3.73" ry="3.73"/>
+						  <polygon class="counter-arrow" points="2.17 61.52 67.56 61.46 34.08 79.09 2.17 61.52"/>
+						  <text id="counter-value" class="cls-2" transform="translate(24.65 43.48)">111</text>
+						</g>
+						</g>
+						</svg>
+
+					</div>
+			  	<!--<h2 id="bonkersNumber"></h2>
 			  	<input type="radio" name="bonkersVal" value="up"> + <br>
 				<input type="radio" name="bonkersVal" value="down"> - <br>
-			  	<button id="guessBonkers" class="btn btn-info btn-lg" type="button">Guess</button>
+			  	<button id="guessBonkers" class="btn btn-info btn-lg" type="button">Guess</button>-->
 
 			  	<div class="modal fade teenWin" tabindex="-1" role="dialog">
 					<div class="modal-dialog">
@@ -236,7 +255,7 @@
 				  	<h5>Total: $<div id="startVal"></div></h5>
 				  	<div id="balanceChoices"></div>
 			  	</div><br>
-			  	
+
 			  	<button id="guessBalance" class="btn btn-info btn-lg" type="button">Guess</button>
 
 			  	<div class="modal fade teenWin" tabindex="-1" role="dialog">
