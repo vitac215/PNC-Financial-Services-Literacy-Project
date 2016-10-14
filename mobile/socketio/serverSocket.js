@@ -236,9 +236,13 @@ exports.init = function(io) {
 				sum += r.val3;
 			}
 			if((sum+r.displayVal) == r.cost) {
-				io.sockets.connected[r.teenID].emit('teenWin');
+				io.sockets.connected[r.teenID].emit('teenWin', {id: r.teenID, playerType: 'teen', room: r});
+				io.sockets.connected[r.parentID].emit('teenWin', {id: r.parentID, playerType: 'parent', room: r});
+				scoreCounter(r.teenID, "teen", r);
 			} else {
-				io.sockets.connected[r.teenID].emit('parentWin');
+				io.sockets.connected[r.teenID].emit('parentWin', {id: r.teenID, playerType: 'teen', room: r});
+				io.sockets.connected[r.parentID].emit('parentWin', {id: r.parentID, playerType: 'parent', room: r});
+				scoreCounter(r.parentID, "parent", r);
 			}
 		});
 

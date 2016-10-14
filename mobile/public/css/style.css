@@ -19,7 +19,7 @@ body {
 }
 
 /* Initially set all the HTML divs to display: none and then display them one by one */
-.spinGame, .spinCategory, .waitingForParent, .waitingForTeen, .inputInformation, .missingDigitScreen, .balanceScreen{
+.spinGame, .spinCategory, .waitingForParent, .waitingForTeen, .inputInformation, .missingDigitScreen, .balanceScreen, .bonkersScreen {
   display: none; }
 
 // .initialPage {

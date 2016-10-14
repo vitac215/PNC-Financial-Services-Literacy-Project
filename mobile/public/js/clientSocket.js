@@ -231,6 +231,7 @@ $(document).ready(function(){
 
     // BALANCE GAME
     socket.on('startBalance', function (data) {
+        clearGameData('balance');
         $('.categoryNameBalance').append(data.category);
         $('.perValueBalance').append(data.per);
         $('.waitingForParent').fadeOut();
@@ -311,6 +312,13 @@ $(document).ready(function(){
             $('#bonkersNumber').empty();
             $('.up-arrow-bonkers').css('display', 'inline');
             $('.down-arrow-bonkers').css('display', 'inline');
+        }
+        if (game == 'balance') {
+            $('.categoryNameBalance').empty();
+            $('.perValueBalance').empty();
+            $('#bonkersNumber').empty();
+            $('#startVal').empty();
+            $('#balanceChoices').empty();
         }
     };
 
