@@ -3,6 +3,22 @@ $(document).ready(function(){
 	// connects the socket
 	var socket = io.connect();
 
+    // Monitor the change of the playerType selection
+    //   make sure the parent get to create the game first
+    $("input[name=player]").change(function() {
+        var playerType = $("input[name=player]:checked").val();
+        console.log(playerType);
+        if (playerType == "parent") {
+            $('#create').show();
+            $('#join').hide();
+        } 
+        if (playerType == "teen") {
+            $('#join').show();
+            $('#create').hide();
+        }     
+    })
+
+
     // when someone creates a room
     $('#create').click(function () {
         var username = $('#username').val(); // username of the player
