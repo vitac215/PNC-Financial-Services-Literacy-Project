@@ -205,8 +205,27 @@ $(document).ready(function(){
         $('.bonkersScreen').fadeIn();
     });
 
+
+    $('.up-arrow-bonkers').click(function (){
+        $('.down-arrow-bonkers').toggle();
+    });
+
+    $('.down-arrow-bonkers').click(function (){
+        $('.up-arrow-bonkers').toggle();
+    });
+
     $('#guessBonkers').click(function () {
-        var guess = $("input[name=bonkersVal]:checked").val();
+        var guess;
+        if ($('.down-arrow-bonkers').css('display') == 'none') {
+            guess = "up";
+        }
+        if ($('.up-arrow-bonkers').css('display') == 'none') {
+            guess = "down";
+        }
+        else {
+            alert("Click the arrow to indicate whether you think the price is HIGHER or LOWER");
+            return false;
+        }
         socket.emit('bonkersResult', {guess: guess});
     });
 
