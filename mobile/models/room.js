@@ -21,6 +21,10 @@ function Room(id) {
 	this.val1;
 	this.val2;
 	this.val3;
+
+	// variables for score counter
+	this.teenScore = 0;
+	this.parentScore = 0;
 }						
 
 Room.prototype.getID = function() { // checks if the player is an artist
@@ -49,6 +53,14 @@ Room.prototype.getItem = function() { // checks if the player is an artist
 
 Room.prototype.getPer = function() { // checks if the player is an artist
 	return this.per;
+}
+
+Room.prototype.getTeenScore = function() {
+	return this.teenScore;
+}
+
+Room.prototype.getParentScore = function() {
+	return this.parentScore;
 }
 
 /*

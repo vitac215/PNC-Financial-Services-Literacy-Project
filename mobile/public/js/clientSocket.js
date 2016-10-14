@@ -46,12 +46,14 @@ $(document).ready(function(){
 	socket.on('choseGame', function(data){
 		$('.initialPage').fadeOut();
 		$('.spinGame').fadeIn();
+        updateScore(data.room);
     });
 
 	socket.on('choseCategory', function(data){
 		$('.initialPage').fadeOut();
         $('.waitingForTeen').fadeOut();
 		$('.spinCategory').fadeIn();
+        updateScore(data.room);
     });
 
     $('#digit').click(function () {
@@ -73,6 +75,7 @@ $(document).ready(function(){
     });
 
     $('#home').click(function () {
+        $('#category').empty();
     	$('.spinCategory').fadeOut();
     	$('#category').append("Home");
 		$('.inputInformation').fadeIn();
@@ -80,6 +83,7 @@ $(document).ready(function(){
     });
 
     $('#travel').click(function () {
+        $('#category').empty();
         $('.spinCategory').fadeOut();
         $('#category').append("Travel");
         $('.inputInformation').fadeIn();
@@ -87,6 +91,7 @@ $(document).ready(function(){
     });
 
     $('#fun').click(function () {
+        $('#category').empty();
         $('.spinCategory').fadeOut();
         $('#category').append("Fun");
         $('.inputInformation').fadeIn();
@@ -94,6 +99,7 @@ $(document).ready(function(){
     });
 
     $('#finance').click(function () {
+        $('#category').empty();
         $('.spinCategory').fadeOut();
         $('#category').append("Finance");
         $('.inputInformation').fadeIn();
@@ -101,6 +107,7 @@ $(document).ready(function(){
     });
 
     $('#purchases').click(function () {
+        $('#category').empty();
         $('.spinCategory').fadeOut();
         $('#category').append("Purchases");
         $('.inputInformation').fadeIn();
@@ -120,9 +127,9 @@ $(document).ready(function(){
     	$('.waitingForTeen').fadeIn();
     });
 
-    // DIGITS GAME
-
+    // MISSINGDIGITS GAME
     socket.on('startDigit', function(data) {
+        clearGameData('digit');
     	$('#categoryName').append(data.category);
     	$('#perValue').append(data.per);
     	var missingID = data.missing;
@@ -166,14 +173,18 @@ $(document).ready(function(){
 	});
 
 	socket.on('parentWin', function (data) {
-		$('.parentWin').modal()
+		$('.parentWin').modal('show');
+        initialize();
+        socket.emit('startNewRound', {id: data.id, playerType: data.playerType, room: data.room});
 	});
 
 	socket.on('teenWin', function (data) {
-		$('.teenWin').modal()
+		$('.teenWin').modal('show');
+        initialize();
+        socket.emit('startNewRound', {id: data.id, playerType: data.playerType, room: data.room});
 	});
 
-    $(".close").click(function () {
+    $('.close').click(function () {
         $('.modal-backdrop').fadeOut();
     });
 
@@ -227,6 +238,47 @@ $(document).ready(function(){
 
     });
 
+
+    // Functions
+
+    // Function to hide all screens 
+    function initialize() {
+        $('.initialPage ').fadeOut();
+        $('.spinGame').fadeOut();
+        $('.spinCategory').fadeOut();
+        $('.waitingForParent').fadeOut();
+        $('.waitingForTeen').fadeOut();
+        $('.inputInformation').fadeOut();
+        $('.missingDigitScreen').fadeOut();
+        $('.balanceScreen').fadeOut();
+        $('.bonkersScreen').fadeOut();
+        $('.spinGame').fadeOut();
+        $('#newRound').fadeOut();
+    };
+
+    // Function to update the score
+    function updateScore(room) {
+        console.log("updating score");  
+        console.log(room);
+        console.log("teenscore: "+room.teenScore+", parentscore: "+room.parentScore);
+        $('#parentScoreCategory').html(room.parentScore);
+        $('#teenScoreCategory').html(room.teenScore);
+        $('#parentScoreGame').html(room.parentScore);
+        $('#teenScoreGame').html(room.teenScore);
+    };
+
+    function clearGameData(game) {
+        $('.parentWin').modal('hide');
+        $('.teenWin').modal('hide');
+
+        if (game == 'digit') {
+            $('#categoryName').empty();
+            $('#perValue').empty();
+            $('.digitList ul').empty();
+            $('.digitList ul').append('<li>$</li>');
+            $('.choices').empty();
+        };
+    };
 
 
 });

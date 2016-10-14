@@ -51,7 +51,7 @@ exports.init = function(io) {
 					io.sockets.connected[r.parentID].emit('waitForTeen');
 					//io.sockets.connected[r.parentID].emit('choseCategory');
 				} else {
-					io.sockets.connected[r.teenID].emit('choseGame');
+					io.sockets.connected[r.teenID].emit('choseGame', {room: r});
 				}
 			}
 
@@ -82,9 +82,9 @@ exports.init = function(io) {
 				}
 
 				if(data.player == "parent"){
-					io.sockets.connected[r.parentID].emit('choseCategory');
+					io.sockets.connected[r.parentID].emit('choseCategory', {room: r});
 				} else {
-					io.sockets.connected[r.teenID].emit('choseGame');
+					io.sockets.connected[r.teenID].emit('choseGame', {room: r});
 				}
 			}
 		}); 
@@ -92,19 +92,21 @@ exports.init = function(io) {
 
 		// teen selected game
 		socket.on('gameSelected', function (data) {
+			var r;
 			var teenID = socket.id;
 			var parentID = 0;
 			for(var i=0; i<rooms.length; i++) {
 				if(rooms[i].getTeen() == teenID) {
 					rooms[i].game = data.game;
 					parentID = rooms[i].getParent();
-					console.log("room: "+rooms[i]);
+					r = rooms[i];
+					console.log("room teenscore: "+rooms[i].teenScore);
 					console.log("parent: "+parentID);
 					break;
 				}
 			}
 			// Now have the parent choose a cateogry
-			io.sockets.connected[parentID].emit('choseCategory');
+			io.sockets.connected[parentID].emit('choseCategory', {room: r});
 		});
 
 		// parent selected category
@@ -121,9 +123,11 @@ exports.init = function(io) {
 		socket.on('saveCost', function (data) { 
 			var parentID = socket.id;
 			var r;
+
 			for(var i=0; i<rooms.length; i++) {
 				if(rooms[i].getParent() == parentID) {
 					r = rooms[i];
+					clearGameData(r);
 					console.log(1);
 					console.log(r);
 					rooms[i].item = data.item;
@@ -153,7 +157,7 @@ exports.init = function(io) {
 				}
 			}
 
-			console.log("game" + r.getGame());
+			console.log("game " + r.getGame());
 			console.log(2);
 			console.log(r);
 			io.sockets.connected[r.parentID].emit('waitForTeen');
@@ -166,6 +170,7 @@ exports.init = function(io) {
 			}
 		});
 
+		// MissingDigits guess
 		socket.on('checkGuess', function (data) {
 			var teenID = socket.id;
 			var r;
@@ -177,9 +182,14 @@ exports.init = function(io) {
 			}
 
 			if(data.guess == r.digitArray[r.missingId]) {
-				io.sockets.connected[r.teenID].emit('teenWin');
+				io.sockets.connected[r.teenID].emit('teenWin', {id: r.teenID, playerType: 'teen', room: r});
+				io.sockets.connected[r.parentID].emit('teenWin', {id: r.parentID, playerType: 'parent', room: r});
+				// Call score counter
+				scoreCounter(r.teenID, "teen", r);
 			} else {
-				io.sockets.connected[r.teenID].emit('parentWin');
+				io.sockets.connected[r.teenID].emit('parentWin', {id: r.teenID, playerType: 'teen', room: r});
+				io.sockets.connected[r.parentID].emit('parentWin', {id: r.parentID, playerType: 'parent', room: r});
+				scoreCounter(r.parentID, "parent", r);
 			}
 		});
 
@@ -228,5 +238,56 @@ exports.init = function(io) {
 			}
 		});
 
+
+		// Start a new round
+		socket.on('startNewRound', function (data) {
+			var r;
+			var found = false;
+			for(var i=0; i<rooms.length; i++) {
+				r = rooms[i];
+				if(r.getID() == data.room) {
+					found = true;
+					break;
+				}
+			}
+			if(data.playerType == "parent"){
+				// Wait for teen to enter and choose a game
+				io.sockets.connected[r.parentID].emit('waitForTeen');
+				//io.sockets.connected[r.parentID].emit('choseCategory');
+			} else {
+				io.sockets.connected[r.teenID].emit('choseGame', {room: r});
+			}
+		});
+
 	});
+
+	function scoreCounter(id, playerType, r) {
+		console.log("Counting now");
+		console.log("initial score: teen "+r.teenScore+", parent "+r.parentScore);
+		if (playerType == "teen") {
+			r.teenScore += 1;
+			console.log("after score: teen "+r.teenScore+", parent "+r.parentScore);
+		}
+		else if (playerType == "parent") {
+			r.parentScore += 1;
+			console.log(r.teenScore);
+			console.log("after score: teen "+r.teenScore+", parent "+r.parentScore);
+		}
+	}
+
+
+	function clearGameData(room) {
+		// variables for Missing Digit
+		this.digitArray = '';
+		this.missingId = [];
+
+		// variables for bonkers
+		this.guess = '';
+
+		// variables for balance
+		this.displayVal = '';
+		this.val1 = '';
+		this.val2 = '';
+		this.val3 = '';
+	}
 }
