@@ -47,7 +47,9 @@ exports.init = function(io) {
 				rooms.push(r);
 
 				if(data.playerType == "parent"){
-					io.sockets.connected[r.parentID].emit('choseCategory');
+					// Wait for teen to enter and choose a game
+					io.sockets.connected[r.parentID].emit('waitForTeen');
+					//io.sockets.connected[r.parentID].emit('choseCategory');
 				} else {
 					io.sockets.connected[r.teenID].emit('choseGame');
 				}
@@ -57,7 +59,7 @@ exports.init = function(io) {
 
 		// When a new user joins the game
 		socket.on('joinRoom', function (data) {
-			var r;
+			var r; // room
 			var found = false;
 			for(var i=0; i<rooms.length; i++) {
 				r = rooms[i];
@@ -80,9 +82,7 @@ exports.init = function(io) {
 				}
 
 				if(data.player == "parent"){
-					// Wait teen to enter and choose a game
-					io.sockets.connected[r.parentID].emit('waitForTeen');
-					//io.sockets.connected[r.parentID].emit('choseCategory');
+					io.sockets.connected[r.parentID].emit('choseCategory');
 				} else {
 					io.sockets.connected[r.teenID].emit('choseGame');
 				}
@@ -93,18 +93,18 @@ exports.init = function(io) {
 		// teen selected game
 		socket.on('gameSelected', function (data) {
 			var teenID = socket.id;
-			var parentID;
+			var parentID = 0;
 			for(var i=0; i<rooms.length; i++) {
 				if(rooms[i].getTeen() == teenID) {
 					rooms[i].game = data.game;
-					parentID = room[i].getParent;
-					console.log("room"+rooms[i]);
-					console.log("parent"+parentID);
+					parentID = rooms[i].getParent();
+					console.log("room: "+rooms[i]);
+					console.log("parent: "+parentID);
 					break;
 				}
 			}
 			// Now have the parent choose a cateogry
-			io.sockets.connected[r.parentID].emit('choseCategory');
+			io.sockets.connected[parentID].emit('choseCategory');
 		});
 
 		// parent selected category

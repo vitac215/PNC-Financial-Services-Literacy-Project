@@ -50,6 +50,7 @@ $(document).ready(function(){
 
 	socket.on('choseCategory', function(data){
 		$('.initialPage').fadeOut();
+        $('.waitingForTeen').fadeOut();
 		$('.spinCategory').fadeIn();
     });
 
@@ -114,6 +115,7 @@ $(document).ready(function(){
     });
 
     socket.on('waitForTeen', function(data) {
+        $('.initialPage').fadeOut();
     	$('.inputInformation').fadeOut();
     	$('.waitingForTeen').fadeIn();
     });
