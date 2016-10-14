@@ -196,15 +196,14 @@ $(document).ready(function(){
 
 
     // BONKERS GAME
-
     socket.on('startBonkers', function (data) {
+        clearGameData('bonkers');
         $('#categoryNameBonkers').append(data.category);
         $('#perValueBonkers').append(data.per);
         $('#bonkersNumber').append(data.guess);
         $('.waitingForParent').fadeOut();
         $('.bonkersScreen').fadeIn();
     });
-
 
     $('.up-arrow-bonkers').click(function (){
         $('.down-arrow-bonkers').toggle();
@@ -219,7 +218,7 @@ $(document).ready(function(){
         if ($('.down-arrow-bonkers').css('display') == 'none') {
             guess = "up";
         }
-        if ($('.up-arrow-bonkers').css('display') == 'none') {
+        else if ($('.up-arrow-bonkers').css('display') == 'none') {
             guess = "down";
         }
         else {
@@ -229,8 +228,8 @@ $(document).ready(function(){
         socket.emit('bonkersResult', {guess: guess});
     });
 
-    // BALANCE GAME
 
+    // BALANCE GAME
     socket.on('startBalance', function (data) {
         $('.categoryNameBalance').append(data.category);
         $('.perValueBalance').append(data.per);
@@ -279,6 +278,8 @@ $(document).ready(function(){
         $('.bonkersScreen').fadeOut();
         $('.spinGame').fadeOut();
         $('#newRound').fadeOut();
+
+        $('#cost').val("");
     };
 
     // Function to update the score
@@ -303,6 +304,14 @@ $(document).ready(function(){
             $('.digitList ul').append('<li>$</li>');
             $('.choices').empty();
         };
+
+        if (game == 'bonkers') {
+            $('#categoryNameBonkers').empty();
+            $('#perValueBonkers').empty();
+            $('#bonkersNumber').empty();
+            $('.up-arrow-bonkers').css('display', 'inline');
+            $('.down-arrow-bonkers').css('display', 'inline');
+        }
     };
 
 
