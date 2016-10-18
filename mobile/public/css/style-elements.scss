@@ -1,0 +1,16 @@
+//color pallette
+  $color-teal-1: #99DFF9;
+  $color-blue-1: #10528F;
+  $color-pink-1: #D82767;
+  $color-pink-2: #F9C2DE;
+
+  //background color for game description element
+  $desc-color: rgba(255,255,255, 0.8);
+
+//typeface
+  @font-face {
+      font-family: "Moderna";
+      src: url("../fonts/MODERNA_.TFF"); /* TTF file for CSS3 browsers */
+  }
+
+  $font-stack: 'Montserrat', sans-serif;

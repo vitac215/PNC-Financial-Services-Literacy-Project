@@ -1,0 +1,20 @@
+/* Initially set all the HTML divs to display: none and then display them one by one */
+@import 'style-elements';
+
+.background-fan{
+  background-image: url("../images/background.png");
+  background-position: left top;
+  background-size: 100% auto;
+}
+.gameDescription{
+  background-color: $desc-color;
+  padding: 1em;
+}
+.bonkers-counter-div{
+  width: 30%;
+  margin:auto;
+}
+
+.counter-arrow{fill: $color-blue-1; stroke: white;}
+.counter-arrow:hover{fill: $color-pink-1; stroke: white}
+.counter-box{fill: $color-pink-2; stroke: white}
