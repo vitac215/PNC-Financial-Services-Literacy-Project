@@ -19,7 +19,7 @@ $(document).ready(function(){
     })
 
 
-    // when someone creates a room
+    // When someone creates a room
     $('#create').click(function () {
         var username = $('#username').val(); // username of the player
         var playerType = $("input[name=player]:checked").val();
@@ -43,12 +43,15 @@ $(document).ready(function(){
         $('.roomExists').modal()
     });
 
+
+    // Choose game (teen)
 	socket.on('choseGame', function(data){
 		$('.initialPage').fadeOut();
 		$('.spinGame').fadeIn();
         updateScore(data.room);
     });
 
+    // Choose category (parent)
 	socket.on('choseCategory', function(data){
 		$('.initialPage').fadeOut();
         $('.waitingForTeen').fadeOut();
@@ -56,6 +59,8 @@ $(document).ready(function(){
         updateScore(data.room);
     });
 
+
+    // When a game is selected
     $('#digit').click(function () {
     	$('.spinGame').fadeOut();
 		$('.waitingForParent').fadeIn();
@@ -74,6 +79,8 @@ $(document).ready(function(){
         socket.emit('gameSelected', {game: "balance"});
     });
 
+
+    // When a category is selected
     $('#home').click(function () {
         $('#category').empty();
     	$('.spinCategory').fadeOut();

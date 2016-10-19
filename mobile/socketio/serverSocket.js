@@ -57,6 +57,7 @@ exports.init = function(io) {
 
 		});
 
+
 		// When a new user joins the game
 		socket.on('joinRoom', function (data) {
 			var r; // room
@@ -90,7 +91,7 @@ exports.init = function(io) {
 		}); 
 
 
-		// teen selected game
+		// Teen selected game
 		socket.on('gameSelected', function (data) {
 			var r;
 			var teenID = socket.id;
@@ -120,6 +121,8 @@ exports.init = function(io) {
 			}
 		});
 
+
+		// Save the cost amount and category the parent inputs
 		socket.on('saveCost', function (data) { 
 			var parentID = socket.id;
 			var r;
@@ -170,7 +173,8 @@ exports.init = function(io) {
 			}
 		});
 
-		// MissingDigits guess
+
+		// MissingDigits 
 		socket.on('checkGuess', function (data) {
 			var teenID = socket.id;
 			var r;
@@ -193,6 +197,8 @@ exports.init = function(io) {
 			}
 		});
 
+
+		// Bonkers
 		socket.on('bonkersResult', function (data) {
 			var teenID = socket.id;
 			var r;
@@ -215,6 +221,8 @@ exports.init = function(io) {
 			}
 		});
 
+
+		// Balance
 		socket.on('balanceResult', function (data) {
 			var teenID = socket.id;
 			var r;
@@ -269,6 +277,8 @@ exports.init = function(io) {
 
 	});
 
+
+	// Count the score
 	function scoreCounter(id, playerType, r) {
 		console.log("Counting now");
 		console.log("initial score: teen "+r.teenScore+", parent "+r.parentScore);
@@ -284,6 +294,7 @@ exports.init = function(io) {
 	}
 
 
+	// Clear game data for starting a new round
 	function clearGameData(room) {
 		// variables for Missing Digit
 		this.digitArray = '';
