@@ -82,50 +82,71 @@ $(document).ready(function(){
 
     // When a category is selected
     $('#home').click(function () {
+        // Clear the category
         $('#category').empty();
     	$('.spinCategory').fadeOut();
     	$('#category').append("Home");
 		$('.inputInformation').fadeIn();
+        // Clear the item
+        $("#item").empty();
+        appendItem("home");
 		socket.emit('categorySelected', {category: "home"});  
     });
 
     $('#travel').click(function () {
+        // Clear the category
         $('#category').empty();
         $('.spinCategory').fadeOut();
         $('#category').append("Travel");
         $('.inputInformation').fadeIn();
+        // Clear the item
+        $("#item").empty();
+        appendItem("travel");
         socket.emit('categorySelected', {category: "travel"});  
     });
 
     $('#fun').click(function () {
+        // Clear the category
         $('#category').empty();
         $('.spinCategory').fadeOut();
         $('#category').append("Fun");
         $('.inputInformation').fadeIn();
+        // Clear the item
+        $("#item").empty();
+        appendItem("fun");
         socket.emit('categorySelected', {category: "fun"});  
     });
 
     $('#finance').click(function () {
+        // Clear the category
         $('#category').empty();
         $('.spinCategory').fadeOut();
         $('#category').append("Finance");
         $('.inputInformation').fadeIn();
+        // Clear the item
+        $("#item").empty();
+        appendItem("finance");
         socket.emit('categorySelected', {category: "finance"});  
     });
 
-    $('#purchases').click(function () {
+    $('#living_expenses').click(function () {
+        // Clear the category
         $('#category').empty();
         $('.spinCategory').fadeOut();
         $('#category').append("Purchases");
         $('.inputInformation').fadeIn();
+        // Clear the item
+        $("#item").empty();
+        appendItem("purchases");
         socket.emit('categorySelected', {category: "purchases"});  
     });
 
     $('#costSubmit').click(function () {
         var cost = parseInt($('#cost').val());
+        console.log(cost);
         // Validate the format of the cost input
-        if (isNaN(cost)) {
-            alert("Please enter the cost in correct format");
+        if ( (isNaN(cost)) || (cost < 10) ) {
+            alert("Please enter the cost in correct format. It should be a number larger than 10");
         }
         else {
             var item =  $('#item :selected').text();
@@ -158,7 +179,9 @@ $(document).ready(function(){
     		$('.digitList ul').append('<li>' + element + '</li>');
     	}
 
-    	var missingDigitPlace = Math.floor((Math.random() * 2) + 1);
+    	//var missingDigitPlace = Math.floor((Math.random() * 2) + 1);
+        var missingDigitPlace = Math.floor(Math.random() * 3);
+        console.log(missingDigitPlace);
     	var seenDigit = [];
     	seenDigit.push(digitArray[missingID]);
     	for(var i=0; i<3; i++) {
@@ -290,6 +313,7 @@ $(document).ready(function(){
         $('#cost').val("");
     };
 
+
     // Function to update the score
     function updateScore(room) {
         console.log("updating score");  
@@ -301,6 +325,7 @@ $(document).ready(function(){
         $('#teenScoreGame').html(room.teenScore);
     };
 
+    // Clear all game data for a new round
     function clearGameData(game) {
         $('.parentWin').modal('hide');
         $('.teenWin').modal('hide');
@@ -328,6 +353,29 @@ $(document).ready(function(){
             $('#balanceChoices').empty();
         }
     };
+
+    // Append sub-categories to the category for parent to input cost
+    function appendItem(category) {
+        if (category == "home"){
+            $("#item").append('<option value="rent">Rent</option>');
+            $("#item").append('<option value="electricity">Electricity</option>');
+            $("#item").append('<option value="water">Water</option>');
+            $("#item").append('<option value="electric">Electricity</option>');
+            $("#item").append('<option value="gas">Gas</option>');
+        }
+        if (category == "travel"){
+
+        }
+        if (category == "fun"){
+
+        }
+        if (category == "finance"){
+
+        }
+        if (category == "living_expenses"){
+
+        }
+    }
 
 
 });

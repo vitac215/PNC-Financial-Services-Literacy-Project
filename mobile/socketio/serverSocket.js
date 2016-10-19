@@ -161,7 +161,6 @@ exports.init = function(io) {
 			}
 
 			console.log("game " + r.getGame());
-			console.log(2);
 			console.log(r);
 			io.sockets.connected[r.parentID].emit('waitForTeen');
 			if(r.getGame() == "digit") {
