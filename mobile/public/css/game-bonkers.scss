@@ -6,15 +6,33 @@
   background-position: left top;
   background-size: 100% auto;
 }
+
 .gameDescription{
   background-color: $desc-color;
   padding: 1em;
 }
+
 .bonkers-counter-div{
   width: 30%;
   margin:auto;
 }
 
-.counter-arrow{fill: $color-blue-1; stroke: white;}
-.counter-arrow:hover{fill: $color-pink-1; stroke: white}
-.counter-box{fill: $color-pink-2; stroke: white}
+.counter-arrow{
+	fill: $color-blue-1; 
+	stroke: white;
+
+}
+
+.counter-arrow:hover{
+	fill: $color-pink-1; 
+	stroke: white
+}
+
+.counter-box{
+	fill: $color-pink-2; 
+	stroke: white
+}
+
+#guessBonkers {
+  margin-top: 30%;
+}
