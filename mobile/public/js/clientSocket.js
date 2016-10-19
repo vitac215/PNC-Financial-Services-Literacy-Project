@@ -141,6 +141,7 @@ $(document).ready(function(){
         socket.emit('categorySelected', {category: "purchases"});  
     });
 
+
     $('#costSubmit').click(function () {
         var cost = parseInt($('#cost').val());
         console.log(cost);
@@ -155,11 +156,14 @@ $(document).ready(function(){
         }
     });
 
+
     socket.on('waitForTeen', function(data) {
         $('.initialPage').fadeOut();
     	$('.inputInformation').fadeOut();
     	$('.waitingForTeen').fadeIn();
     });
+
+
 
     // MISSINGDIGITS GAME
     socket.on('startDigit', function(data) {
@@ -225,6 +229,7 @@ $(document).ready(function(){
     });
 
 
+
     // BONKERS GAME
     socket.on('startBonkers', function (data) {
         clearGameData('bonkers');
@@ -235,6 +240,7 @@ $(document).ready(function(){
         $('.bonkersScreen').fadeIn();
     });
 
+    // Toogle on and off the arrows
     $('.up-arrow-bonkers').click(function (){
         $('.down-arrow-bonkers').toggle();
     });
@@ -252,11 +258,13 @@ $(document).ready(function(){
             guess = "down";
         }
         else {
+            // Make sure the teen selects higher or lower before pressing the guess button
             alert("Click the arrow to indicate whether you think the price is HIGHER or LOWER");
             return false;
         }
         socket.emit('bonkersResult', {guess: guess});
     });
+
 
 
     // BALANCE GAME
@@ -266,7 +274,6 @@ $(document).ready(function(){
         $('.perValueBalance').append(data.per);
         $('.waitingForParent').fadeOut();
         $('.balanceScreen').fadeIn();
-
 
         $('#startVal').append(data.displayVal);
         // append the guesses

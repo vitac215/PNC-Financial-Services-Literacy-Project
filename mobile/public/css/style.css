@@ -29,6 +29,9 @@
   fill: #F9C2DE;
   stroke: white; }
 
+#guessBonkers {
+  margin-top: 30%; }
+
 @font-face {
   font-family: "Moderna";
   src: url("../fonts/MODERNA_.TFF");
@@ -75,6 +78,8 @@ body {
 .spinGame, .spinCategory, .waitingForParent, .waitingForTeen, .inputInformation, .missingDigitScreen, .balanceScreen, .bonkersScreen {
   display: none; }
 
+/* .initialPage {
+   display: none;} */
 #join {
   display: none; }
 

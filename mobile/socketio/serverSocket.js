@@ -101,8 +101,8 @@ exports.init = function(io) {
 					rooms[i].game = data.game;
 					parentID = rooms[i].getParent();
 					r = rooms[i];
-					console.log("room teenscore: "+rooms[i].teenScore);
-					console.log("parent: "+parentID);
+					// console.log("room teenscore: "+rooms[i].teenScore);
+					// console.log("parent: "+parentID);
 					break;
 				}
 			}
@@ -142,7 +142,9 @@ exports.init = function(io) {
 					rooms[i].missingId = Math.floor((Math.random() * (rooms[i].digitArray.length-1)) + 1);
 					
 					// bonkers
-					rooms[i].guess = Math.floor((Math.random() * ((data.cost-1)*2)) + 1);
+					rooms[i].guess = Math.floor((Math.random() * (data.cost*1.5)) + data.cost*0.5);
+					console.log("bonkers");
+					console.log(rooms[i].guess);
 
 					// balance
 					var tempCost = data.cost;

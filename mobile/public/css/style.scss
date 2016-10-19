@@ -18,24 +18,28 @@ body {
 
 /* Initially set all the HTML divs to display: none and then display them one by one */
 .spinGame, .spinCategory, .waitingForParent, .waitingForTeen, .inputInformation, .missingDigitScreen, .balanceScreen, .bonkersScreen {
-  display: none; }
+  display: none; 
+}
 
-// .initialPage {
-//   display: none;}
+/* .initialPage {
+   display: none;} */
 
 #join {
-  display:none;}
+  display:none;
+}
 
 .teenWin, .parentWin, .wrongCode, .roomExists {
-  display: none; }
+  display: none; 
+}
 
 .gameTitle {
-  padding: 1.5em; }
+  padding: 1.5em; 
+}
 
 .container {
   height: 100vh;
-  padding: 0; }
-
+  padding: 0; 
+}
 
 #missingDigitList li {
   list-style-type: none;
@@ -45,19 +49,23 @@ body {
 .col-centered {
   float: none;
   margin: 0 auto;
-  text-align: center; }
+  text-align: center; 
+}
 
 .playerSelect {
   text-align: left;
-  margin: 10px 140px; }
+  margin: 10px 140px; 
+}
 
 .spinGame button, .spinCategory button {
-  margin: 20px; }
+  margin: 20px; 
+}
 
 #categorySelect {
   text-align: left;
   margin: 70px auto;
-  width: 250px; }
+  width: 250px; 
+}
 
 
 /*# sourceMappingURL=style.css.map */
