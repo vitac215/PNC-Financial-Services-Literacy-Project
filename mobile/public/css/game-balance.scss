@@ -15,9 +15,20 @@
   display: inline-block;
 }
 
-.ball-visible .balance-ball {
-  fill: $color-blue-1;
+.ball-static {
+  circle {
+    fill: $color-blue-1;
+  }
+
 }
+
+.ball-interactive {
+  circle {
+    fill: $color-pink-1;
+  }
+
+}
+
 
 .ball-hidden {
   display: none;
@@ -28,4 +39,38 @@
   font-size: 0.6em;
   text-align: center;
   fill: white;
+}
+
+.balance-line, .cls-6{
+  fill:none;
+  stroke:$color-blue-1;
+  stroke-width:3px;
+}
+
+.balance-line{
+  stroke-miterlimit:10;
+}
+.cls-2{
+  fill:#d82767;
+}
+.cls-2,.cls-7{
+  stroke:#fff;stroke-width:2px;
+}
+.cls-2,.cls-6,.cls-7{
+  stroke-linejoin:round;
+}
+.cls-3,.cls-4,.cls-8{
+  font-size:12px;font-family:MyriadPro-Regular, Myriad Pro;
+}
+.cls-3{
+  fill:#fff;
+}
+.cls-4{
+  fill:#ff0;
+}
+.cls-5,.cls-7{
+  fill:$color-blue-1;
+}
+.cls-8{
+  fill:$color-blue-1;
 }
