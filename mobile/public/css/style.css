@@ -33,6 +33,34 @@
   font-family: "Moderna";
   src: url("../fonts/MODERNA_.TFF");
   /* TTF file for CSS3 browsers */ }
+@font-face {
+  font-family: "Moderna";
+  src: url("../fonts/MODERNA_.TFF");
+  /* TTF file for CSS3 browsers */ }
+#balance-title {
+  padding-left: 3em;
+  padding-right: 3em; }
+
+.balance-game-div {
+  text-align: center; }
+
+.balance-game-svg {
+  width: 80%;
+  margin-bottom: 2em;
+  display: inline-block; }
+
+.ball-visible .balance-ball {
+  fill: #10528F; }
+
+.ball-hidden {
+  display: none; }
+
+.ball-text {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.6em;
+  text-align: center;
+  fill: white; }
+
 * {
   font-family: "Montserrat", sans-serif; }
 

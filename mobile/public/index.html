@@ -265,14 +265,76 @@
 		<div class="container balanceScreen">
 			<div class="row">
 			  <div class="col-xs-12 col-md-4 col-centered">
-			  	<h2>Balance</h2><br>
+					<div id="balance-title" class="gameTitle">
+						<img src="images/balance-heading.png" alt="Bonkers Title" width="100%">
+					</div>
 			  	<div class="gameDescription">
 				  	Category: <span class="categoryNameBalance"></span><br>
 				  	Guess the Cost: Cost payment per <span class="perValueBalance"></span><br>
 				  	<h5>Select bags to guess the amount spent on <span class="categoryNameBalance"></span> per <span class="perValueBalance"></span></h5>
-				  	<h5>Total: $<span id="startVal"></span></h5>
-				  	<div id="balanceChoices"></div>
 			  	</div><br>
+					<div class="balance-game-div">
+
+						<svg class="balance-game-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 164.83 132.62"><defs>
+						  <style>.cls-1,.cls-6{fill:none;stroke:#10528f;stroke-width:3px;}.cls-1{stroke-miterlimit:10;}.cls-2{fill:#d82767;}.cls-2,.cls-7{stroke:#fff;stroke-width:2px;}.cls-2,.cls-6,.cls-7{stroke-linejoin:round;}.cls-3,.cls-4,.cls-8{font-size:12px;font-family:MyriadPro-Regular, Myriad Pro;}.cls-3{fill:#ff0;}.cls-4{fill:#fff;}.cls-5,.cls-7{fill:#10528f;}.cls-8{fill:#f2f2f2;}</style>
+						</defs>
+
+						<title>balance</title>
+						<g id="Layer_2" data-name="Layer 2">
+
+							<!--SELECTION OPTIONS-->
+						  <g id="Layer_1-2" data-name="Layer 1">
+						    <line id="_Path_" data-name="&lt;Path&gt;" class="cls-1" x1="82.41" y1="18.53" x2="82.41" y2="98.76"/><line id="_Path_2" data-name="&lt;Path&gt;" class="cls-1" y1="98.76" x2="164.83" y2="98.76"/>
+						    <g class="ball-visible" data-name="&lt;Group&gt;"><g id="_Group_2" data-name="&lt;Group&gt;">
+						      <circle class="balance-ball" data-name="&lt;Path&gt;" class="cls-2" cx="48.11" cy="118.73" r="12.89"/>
+						      <text id="ball-static-1" class="ball-text" transform="translate(42.43 122.72)">20</text>
+						    </g>
+						    <g id="_Group_3" data-name="&lt;Group&gt;">
+						      <g class="ball-visible" data-name="&lt;Group&gt;">
+						        <circle class="balance-ball" data-name="&lt;Path&gt;" class="cls-2" cx="82.23" cy="118.73" r="12.89"/>
+						        <text id="ball-static-2" class="ball-text" transform="translate(76.56 122.72)">20</text>
+						      </g>
+						    </g>
+						    <g id="_Group_5" data-name="&lt;Group&gt;">
+						      <g class="ball-hidden" data-name="&lt;Group&gt;">
+						        <circle class="balance-ball" data-name="&lt;Path&gt;" class="cls-2" cx="116.36" cy="118.73" r="12.89"/>
+						        <text id="ball-static-3" class="ball-text" transform="translate(110.68 122.72)">20</text>
+						      </g>
+						    </g>
+						  </g>
+
+							<!--SCALES-->
+						  <g id="_Group_7" data-name="&lt;Group&gt;">
+						    <circle class="ball-visible" data-name="&lt;Path&gt;" class="cls-2" cx="132.64" cy="45.12" r="16.89"/>
+						    <text class="cls-4" transform="translate(122.97 48.83)">129</text>
+						  </g><g id="_Group_8" data-name="&lt;Group&gt;">
+						  <line id="_Path_7" data-name="&lt;Path&gt;" class="cls-1" x1="31.87" y1="30.41" x2="132.96" y2="6.06"/>
+						</g>
+						<g id="_Group_9" data-name="&lt;Group&gt;">
+						  <circle id="_Path_8" data-name="&lt;Path&gt;" class="cls-5" cx="132.76" cy="5.8" r="5.8" transform="translate(2.33 31.24) rotate(-13.54)"/>
+						  <polyline id="_Path_9" data-name="&lt;Path&gt;" class="cls-6" points="104.46 67.89 132.64 7.15 160.83 67.89"/>
+						  <rect id="_Rectangle_" data-name="&lt;Rectangle&gt;" class="cls-5" x="101.09" y="55.43" width="63.73" height="14.98"/>
+						</g>
+						<g id="_Group_10" data-name="&lt;Group&gt;">
+						  <circle id="_Path_10" data-name="&lt;Path&gt;" class="cls-5" cx="31.68" cy="29.6" r="5.8" transform="translate(-6.05 8.24) rotate(-13.54)"/>
+						  <polyline id="_Path_11" data-name="&lt;Path&gt;" class="cls-6" points="3.38 91.69 31.56 30.94 59.74 91.69"/></g><g id="_Group_11" data-name="&lt;Group&gt;">
+						  <circle id="_Path_12" data-name="&lt;Path&gt;" class="cls-7" cx="19.56" cy="72.26" r="12"/>
+						  <text class="cls-8" transform="translate(16.86 75.25)">9</text>
+						</g>
+						<g id="_Group_12" data-name="&lt;Group&gt;">
+						  <circle id="_Path_13" data-name="&lt;Path&gt;" class="cls-2" cx="44.61" cy="72.26" r="12"/>
+						  <text class="cls-8" transform="translate(39.21 76.25)">50</text>
+						  </g>
+						  <g id="_Group_13" data-name="&lt;Group&gt;">
+						    <circle id="_Path_14" data-name="&lt;Path&gt;" class="cls-2" cx="32.43" cy="51.37" r="12"/>
+						    <text class="cls-8" transform="translate(22.99 55.43)">100</text>
+						  </g>
+						  <rect id="_Rectangle_2" data-name="&lt;Rectangle&gt;" class="cls-5" x="0.4" y="79.02" width="63.73" height="14.98"/>
+						  <text class="cls-8" transform="translate(25.88 90.51)">50</text>
+						</g>
+						</g>
+						</svg>
+					</div>
 
 			  	<button id="guessBalance" class="btn btn-info btn-lg" type="button">Guess</button>
 
