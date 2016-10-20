@@ -275,14 +275,19 @@ $(document).ready(function(){
         $('.waitingForParent').fadeOut();
         $('.balanceScreen').fadeIn();
 
-        $('#startVal').append(data.displayVal);
-        // append the guesses
-        $('#balanceChoices').append('<input id=' + data.val1 + ' type="checkbox" name="balanceVal" value=' + data.val1 + '> ' + data.val1 + '<br>');
-        $('#balanceChoices').append('<input id=' + data.val2 + ' type="checkbox" name="balanceVal" value=' + data.val2 + '> ' + data.val2 + '<br>');
-        $('#balanceChoices').append('<input id=' + data.val3 + ' type="checkbox" name="balanceVal" value=' + data.val3 + '> ' + data.val3 + '<br>');
+        // Append the initial number on the static ball on scale
+        $('#ball-scale-text-1').html(data.displayVal);
 
+        // Append the guesses
+        balanceOption('ball-option-text-1', data.val1);
+        balanceOption('ball-option-text-2', data.val2);
+        balanceOption('ball-option-text-3', data.val3);
+        // $('#ball-option-text-1').append('<input id=' + data.val1 + ' type="checkbox" name="balanceVal" value=' + data.val1 + '> ' + data.val1 + '<br>');
+        // $('#ball-option-text-2').append('<input id=' + data.val2 + ' type="checkbox" name="balanceVal" value=' + data.val2 + '> ' + data.val2 + '<br>');
+        // $('#ball-option-text-3').append('<input id=' + data.val3 + ' type="checkbox" name="balanceVal" value=' + data.val3 + '> ' + data.val3 + '<br>');
     });
     
+
     $('#guessBalance').click(function () {       
         var one = false;
         var two = false;
@@ -383,6 +388,15 @@ $(document).ready(function(){
 
         }
     }
+
+    // Function for the balance game.
+    //  Change value attribute and actual valee of the option ball 
+    function balanceOption(dest_id, value) {
+        // Change the value attribute
+        $('#'+dest_id).attr("value", value);
+        // Change the actual value
+        $('#'+dest_id).html(value);
+    } 
 
 
 });
