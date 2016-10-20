@@ -276,15 +276,25 @@ $(document).ready(function(){
         $('.balanceScreen').fadeIn();
 
         // Append the initial number on the static ball on scale
-        $('#ball-scale-text-1').html(data.displayVal);
+        $('#ball-scale-text-0').html(data.displayVal);
 
         // Append the guesses
-        balanceOption('ball-option-text-1', data.val1);
-        balanceOption('ball-option-text-2', data.val2);
-        balanceOption('ball-option-text-3', data.val3);
+        balanceAppend('ball-option-text-1', data.val1);
+        balanceAppend('ball-option-text-2', data.val2);
+        balanceAppend('ball-option-text-3', data.val3);
         // $('#ball-option-text-1').append('<input id=' + data.val1 + ' type="checkbox" name="balanceVal" value=' + data.val1 + '> ' + data.val1 + '<br>');
         // $('#ball-option-text-2').append('<input id=' + data.val2 + ' type="checkbox" name="balanceVal" value=' + data.val2 + '> ' + data.val2 + '<br>');
         // $('#ball-option-text-3').append('<input id=' + data.val3 + ' type="checkbox" name="balanceVal" value=' + data.val3 + '> ' + data.val3 + '<br>');
+    });
+
+    // Map the relationship between the option balls and scale balls
+    $('#ball-option-text-1').click(function() {
+        // Make sure there're only 2 balls 
+        // If option ball 1 has value, move it onto scale ball 1
+        if (this.html() != "") {
+            $('#ball-scale-text-1').show();
+            balanceAppend('ball-scale-text-1', data.)
+        }
     });
     
 
@@ -391,7 +401,7 @@ $(document).ready(function(){
 
     // Function for the balance game.
     //  Change value attribute and actual valee of the option ball 
-    function balanceOption(dest_id, value) {
+    function balanceAppend(dest_id, value) {
         // Change the value attribute
         $('#'+dest_id).attr("value", value);
         // Change the actual value
