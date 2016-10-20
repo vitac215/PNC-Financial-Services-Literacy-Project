@@ -285,18 +285,34 @@ $(document).ready(function(){
         // $('#ball-option-text-1').append('<input id=' + data.val1 + ' type="checkbox" name="balanceVal" value=' + data.val1 + '> ' + data.val1 + '<br>');
         // $('#ball-option-text-2').append('<input id=' + data.val2 + ' type="checkbox" name="balanceVal" value=' + data.val2 + '> ' + data.val2 + '<br>');
         // $('#ball-option-text-3').append('<input id=' + data.val3 + ' type="checkbox" name="balanceVal" value=' + data.val3 + '> ' + data.val3 + '<br>');
+
+        // Map the relationship between the option balls and scale balls
+        $('#ball-option-text-1').click(function() {
+            // If option ball 1 has value, move it onto scale ball 1
+            if ($(this).html() != "") {
+                $('#ball-option-1').hide();
+                $('#ball-scale-1').show();
+                balanceAppend('ball-scale-text-1', data.val1);
+            }
+        });
+        $('#ball-option-text-2').click(function() {
+            // If option ball 2 has value, move it onto scale ball 2
+            if ($(this).html() != "") {
+                $('#ball-option-2').hide();
+                $('#ball-scale-2').show();
+                balanceAppend('ball-scale-text-2', data.val2);
+            }
+        });
+        $('#ball-option-text-3').click(function() {
+            // If option ball 2 has value, move it onto scale ball 2
+            if ($(this).html() != "") {
+                $('#ball-option-3').hide();
+                $('#ball-scale-3').show();
+                balanceAppend('ball-scale-text-3', data.val2);
+            }
+        });
     });
 
-    // Map the relationship between the option balls and scale balls
-    $('#ball-option-text-1').click(function() {
-        // Make sure there're only 2 balls 
-        // If option ball 1 has value, move it onto scale ball 1
-        if (this.html() != "") {
-            $('#ball-scale-text-1').show();
-            balanceAppend('ball-scale-text-1', data.)
-        }
-    });
-    
 
     $('#guessBalance').click(function () {       
         var one = false;
