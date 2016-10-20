@@ -282,9 +282,6 @@ $(document).ready(function(){
         balanceAppend('ball-option-text-1', data.val1);
         balanceAppend('ball-option-text-2', data.val2);
         balanceAppend('ball-option-text-3', data.val3);
-        // $('#ball-option-text-1').append('<input id=' + data.val1 + ' type="checkbox" name="balanceVal" value=' + data.val1 + '> ' + data.val1 + '<br>');
-        // $('#ball-option-text-2').append('<input id=' + data.val2 + ' type="checkbox" name="balanceVal" value=' + data.val2 + '> ' + data.val2 + '<br>');
-        // $('#ball-option-text-3').append('<input id=' + data.val3 + ' type="checkbox" name="balanceVal" value=' + data.val3 + '> ' + data.val3 + '<br>');
 
         // Map the relationship between the option balls and scale balls
         $('#ball-option-text-1').click(function() {
@@ -292,6 +289,7 @@ $(document).ready(function(){
             if ($(this).html() != "") {
                 $('#ball-option-1').hide();
                 $('#ball-scale-1').show();
+                $('#ball-option-text-1').html("");
                 balanceAppend('ball-scale-text-1', data.val1);
             }
         });
@@ -300,6 +298,7 @@ $(document).ready(function(){
             if ($(this).html() != "") {
                 $('#ball-option-2').hide();
                 $('#ball-scale-2').show();
+                $('#ball-option-text-2').html("");
                 balanceAppend('ball-scale-text-2', data.val2);
             }
         });
@@ -308,7 +307,36 @@ $(document).ready(function(){
             if ($(this).html() != "") {
                 $('#ball-option-3').hide();
                 $('#ball-scale-3').show();
+                $('#ball-option-text-3').html("");
                 balanceAppend('ball-scale-text-3', data.val2);
+            }
+        });
+
+        $('#ball-scale-text-1').click(function() {
+            // If option ball 1 has value, move it onto scale ball 1
+            if ($(this).html() != "") {
+                $('#ball-scale-1').hide();
+                $('#ball-option-1').show();
+                $('#ball-scale-text-1').html("");
+                balanceAppend('ball-option-text-1', data.val1);
+            }
+        });
+        $('#ball-scale-text-2').click(function() {
+            // If option ball 2 has value, move it onto scale ball 2
+            if ($(this).html() != "") {
+                $('#ball-scale-2').hide();
+                $('#ball-option-2').show();
+                $('#ball-scale-text-2').html("");
+                balanceAppend('ball-option-text-2', data.val2);
+            }
+        });
+        $('#ball-scale-text-3').click(function() {
+            // If option ball 2 has value, move it onto scale ball 2
+            if ($(this).html() != "") {
+                $('#ball-scale-3').hide();
+                $('#ball-option-3').show();
+                $('#ball-scale-text-3').html("");
+                balanceAppend('ball-option-text-3', data.val2);
             }
         });
     });
@@ -423,6 +451,12 @@ $(document).ready(function(){
         // Change the actual value
         $('#'+dest_id).html(value);
     } 
+
+    // Function for the balance game.
+    //  Update the left scale value
+    function updateScale() {
+
+    }
 
 
 });
