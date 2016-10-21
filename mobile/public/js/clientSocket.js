@@ -144,7 +144,7 @@ $(document).ready(function(){
 
     $('#costSubmit').click(function () {
         var cost = parseInt($('#cost').val());
-        console.log(cost);
+        console.log("cost submit: "+cost);
         // Validate the format of the cost input
         if ( (isNaN(cost)) || (cost < 10) ) {
             alert("Please enter the cost in correct format. It should be a number larger than 10");
@@ -354,13 +354,13 @@ $(document).ready(function(){
         var one = false;
         var two = false;
         var three = false;
-        if($('#balanceChoices').children().first().is(":checked")){
+        if($('#ball-scale-text-1').html() != ""){
             one = true;
         }
-        if($('#balanceChoices').children().first().next().next().is(":checked")){
+        if($('#ball-scale-text-2').html() != ""){
             two = true;
         }
-        if($('#balanceChoices').children().first().next().next().next().next().is(":checked")){
+        if($('#ball-scale-text-3').html() != ""){
             three = true;
         }
         socket.emit('balanceResult', {one: one, two: two, three: three});
@@ -391,7 +391,7 @@ $(document).ready(function(){
     // Function to update the score
     function updateScore(room) {
         console.log("updating score");  
-        console.log(room);
+        console.log("room: "+room);
         console.log("teenscore: "+room.teenScore+", parentscore: "+room.parentScore);
         $('#parentScoreCategory').html(room.parentScore);
         $('#teenScoreCategory').html(room.teenScore);
@@ -423,8 +423,12 @@ $(document).ready(function(){
             $('.categoryNameBalance').empty();
             $('.perValueBalance').empty();
             $('#bonkersNumber').empty();
-            $('#startVal').empty();
-            $('#balanceChoices').empty();
+            //$('##startVal').empty();
+           //$('#balanceChoices').empty();
+            $('.ball-text').html("");
+            $('#ball-solution-text').html("?");
+            $('.ball-interactive').show();
+            $('.ball-hidden').hide();
         }
     };
 
@@ -463,7 +467,7 @@ $(document).ready(function(){
     // Function for the balance game.
     //  Update the left scale value
     function updateScale() {
-        var sum = $('#ball-scale-text-0').html();
+        var sum = parseInt($('#ball-scale-text-0').html());
         if ($('#ball-scale-text-1').html() != "") {
             sum += parseInt($('#ball-scale-text-1').html());
         }
@@ -473,7 +477,7 @@ $(document).ready(function(){
         if ($('#ball-scale-text-3').html() != "") {
             sum += parseInt($('#ball-scale-text-3').html());
         }
-        console.log(sum);
+        console.log("sum: "+sum);
         $('#nest-total-text').html(sum);
     }
 
