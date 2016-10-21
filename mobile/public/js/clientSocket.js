@@ -276,7 +276,9 @@ $(document).ready(function(){
         $('.balanceScreen').fadeIn();
 
         // Append the initial number on the static ball on scale
+        console.log("initialval for balance: "+data.displayVal)
         $('#ball-scale-text-0').html(data.displayVal);
+        $('#nest-total-text').html(data.displayVal);
 
         // Append the guesses
         balanceAppend('ball-option-text-1', data.val1);
@@ -284,59 +286,65 @@ $(document).ready(function(){
         balanceAppend('ball-option-text-3', data.val3);
 
         // Map the relationship between the option balls and scale balls
-        $('#ball-option-text-1').click(function() {
+        $('#ball-option-1').click(function() {
             // If option ball 1 has value, move it onto scale ball 1
             if ($(this).html() != "") {
                 $('#ball-option-1').hide();
                 $('#ball-scale-1').show();
                 $('#ball-option-text-1').html("");
                 balanceAppend('ball-scale-text-1', data.val1);
+                updateScale();
             }
         });
-        $('#ball-option-text-2').click(function() {
+        $('#ball-option-2').click(function() {
             // If option ball 2 has value, move it onto scale ball 2
             if ($(this).html() != "") {
                 $('#ball-option-2').hide();
                 $('#ball-scale-2').show();
                 $('#ball-option-text-2').html("");
                 balanceAppend('ball-scale-text-2', data.val2);
+                updateScale();
             }
         });
-        $('#ball-option-text-3').click(function() {
+        $('#ball-option-3').click(function() {
             // If option ball 2 has value, move it onto scale ball 2
             if ($(this).html() != "") {
                 $('#ball-option-3').hide();
                 $('#ball-scale-3').show();
                 $('#ball-option-text-3').html("");
                 balanceAppend('ball-scale-text-3', data.val2);
+                updateScale();
             }
         });
 
-        $('#ball-scale-text-1').click(function() {
-            // If option ball 1 has value, move it onto scale ball 1
+        $('#ball-scale-1').click(function() {
+            // If scale ball 1 has value, move it onto option ball 1
             if ($(this).html() != "") {
                 $('#ball-scale-1').hide();
                 $('#ball-option-1').show();
                 $('#ball-scale-text-1').html("");
                 balanceAppend('ball-option-text-1', data.val1);
+                updateScale();
             }
         });
-        $('#ball-scale-text-2').click(function() {
-            // If option ball 2 has value, move it onto scale ball 2
+        $('#ball-scale-2').click(function() {
+            // If scale ball 2 has value, move it onto option ball 2
             if ($(this).html() != "") {
                 $('#ball-scale-2').hide();
                 $('#ball-option-2').show();
                 $('#ball-scale-text-2').html("");
                 balanceAppend('ball-option-text-2', data.val2);
+                updateScale();
             }
         });
-        $('#ball-scale-text-3').click(function() {
-            // If option ball 2 has value, move it onto scale ball 2
+        $('#ball-scale-3').click(function() {
+            // If scale ball 3 has value, move it onto option ball 3
             if ($(this).html() != "") {
                 $('#ball-scale-3').hide();
                 $('#ball-option-3').show();
                 $('#ball-scale-text-3').html("");
                 balanceAppend('ball-option-text-3', data.val2);
+                updateScale();
             }
         });
     });
@@ -455,7 +463,18 @@ $(document).ready(function(){
     // Function for the balance game.
     //  Update the left scale value
     function updateScale() {
-
+        var sum = 0;
+        if ($('#ball-scale-text-1').html() != "") {
+            sum += parseInt($('#ball-scale-text-1').html());
+        }
+        if ($('#ball-scale-text-2').html() != "") {
+            sum += parseInt($('#ball-scale-text-2').html());
+        }
+        if ($('#ball-scale-text-3').html() != "") {
+            sum += parseInt($('#ball-scale-text-3').html());
+        }
+        console.log(sum);
+        $('#nest-total-text').html(sum);
     }
 
 
