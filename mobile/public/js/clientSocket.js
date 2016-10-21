@@ -463,7 +463,7 @@ $(document).ready(function(){
     // Function for the balance game.
     //  Update the left scale value
     function updateScale() {
-        var sum = 0;
+        var sum = $('#ball-scale-text-0').html();
         if ($('#ball-scale-text-1').html() != "") {
             sum += parseInt($('#ball-scale-text-1').html());
         }
