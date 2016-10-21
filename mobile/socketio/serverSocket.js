@@ -148,7 +148,7 @@ exports.init = function(io) {
 
 					// balance
 					var tempCost = data.cost;
-					rooms[i].displayVal = tempCost % 10;
+					rooms[i].displayVal = tempCost % 5;
 					tempCost = tempCost - rooms[i].displayVal;
 
 					rooms[i].val1 = Math.floor((Math.random() * (data.cost-1) + 1));
