@@ -144,11 +144,13 @@ exports.init = function(io) {
 					// bonkers
 					rooms[i].guess = Math.floor((Math.random() * (data.cost*1.5)) + data.cost*0.5);
 					console.log("bonkers");
-					console.log(rooms[i].guess);
+					console.log("bonkers number guess: "+rooms[i].guess);
 
 					// balance
 					var tempCost = data.cost;
-					rooms[i].displayVal = tempCost % 5;
+					console.log("tempCost: "+tempCost);
+					rooms[i].displayVal = tempCost % 10;
+					console.log("balance displayVal: "+rooms[i].displayVal);
 					tempCost = tempCost - rooms[i].displayVal;
 
 					rooms[i].val1 = Math.floor((Math.random() * (data.cost-1) + 1));
