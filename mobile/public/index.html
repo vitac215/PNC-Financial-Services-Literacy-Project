@@ -142,24 +142,29 @@
 			</div>
 		</div>
 
-		<div class="container missingDigitScreen">
+		<div id="missing-digit" class="container missingDigitScreen">
 			<div class="row">
 			  <div class="col-xs-12 col-md-4 col-centered">
-			  	<h2>Missing Digit</h2><br>
+			  	<div class="gameTitle">
+						<img src="images/missing-digit-heading.png" alt="Missing Digit Title" width="100%">
+					</div>
 			  	<div class="gameDescription">
 				  	Category: <span id="categoryName"></span><br>
 				  	Guess the Cost: Cost payment per <span id="perValue"></span><br>
 				  	<h5>Directions: Select the missing number</h5>
 			  	</div><br>
-			  	<h2>
-			  		<div class = digitList>
+
+			  		<!--<div class = digitList>
 				  		<ul id="missingDigitList">
 				  			<li>$</li>
 				  		</ul>
 			  		</div>
 
-			  		<div class = choices></div>
-			  	</h2>
+						<div class = choices></div>-->
+							<div class="digit-option"> <span>500</span> </div>
+							<div class="digit-option"> <span>540</span> </div>
+							<div class="digit-option"> <span>580</span> </div>
+
 			  	<button id="guess" class="btn btn-info btn-lg" type="button">Guess</button>
 
 			  	<div class="modal fade teenWin" tabindex="-1" role="dialog">

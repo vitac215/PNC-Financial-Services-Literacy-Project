@@ -9,10 +9,6 @@
   background-position: left top;
   background-size: 100% auto; }
 
-.gameDescription {
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 1em; }
-
 .bonkers-counter-div {
   width: 30%;
   margin: auto; }
@@ -47,6 +43,9 @@
 .balance-game-div {
   text-align: center; }
 
+.balanceScreen {
+  background-color: #99DFF9; }
+
 .balance-game-svg {
   width: 80%;
   margin-bottom: 2em;
@@ -58,7 +57,7 @@
 .ball-interactive circle {
   fill: #D82767; }
 
-.ball-hidden {
+.ball-hidden, #ball-solution {
   display: none; }
 
 .ball-text {
@@ -101,12 +100,41 @@
 .cls-8 {
   fill: #10528F; }
 
+@font-face {
+  font-family: "Moderna";
+  src: url("../fonts/MODERNA_.TFF");
+  /* TTF file for CSS3 browsers */ }
+#missing-digit {
+  background: yellow;
+  background: -webkit-linear-gradient(yellow, white);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(yellow, white);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(yellow, white);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(yellow, white);
+  /* Standard syntax */ }
+
+.digit-option {
+  width: 50%;
+  margin: auto;
+  padding: 0.5em; }
+  .digit-option span:hover, .digit-option span:active {
+    color: #D82767; }
+  .digit-option span {
+    font-size: 2em; }
+
 * {
   font-family: "Montserrat", sans-serif; }
 
 body {
   font-family: "Montserrat", sans-serif;
   background-color: #99DFF9; }
+
+.gameDescription {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: left;
+  padding: 1em; }
 
 #logo {
   height: 100px; }
