@@ -9,15 +9,17 @@
 }
 
 .digit-option {
+  font-size: 2em;
   width: 50%;
   margin: auto;
   padding: $standard-padding;
 
-  span:hover, span:active {
+  span {
       color: $color-pink-1;
   }
-  span{
-    font-size: 2em;
-  }
+}
 
+.digit-option:hover, .digit-option:active {
+  color: $color-pink-1;
+  cursor: hand;
 }

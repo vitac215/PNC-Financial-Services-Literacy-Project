@@ -168,50 +168,72 @@ $(document).ready(function(){
     // MISSINGDIGITS GAME
     socket.on('startDigit', function(data) {
         clearGameData('digit');
+        $('.digit-option').empty();
+
     	$('#categoryName').append(data.category);
     	$('#perValue').append(data.per+"ly ");
         $('#subCategory').append(data.item);
     	var missingID = data.missing;
     	var digitArray = data.digits;
   		var element;
-    	for(var i=0; i<digitArray.length; i++) {
-    		if(i != missingID) {
-    			element = digitArray[i];
-    		} else {
-    			element = "_"
-    		}
 
-    		$('.digitList ul').append('<li>' + element + '</li>');
-    	}
-
-    	//var missingDigitPlace = Math.floor((Math.random() * 2) + 1);
+        // Determine the missing digit choices
         var missingDigitPlace = Math.floor(Math.random() * 3);
         console.log(missingDigitPlace);
-    	var seenDigit = [];
-    	seenDigit.push(digitArray[missingID]);
-    	for(var i=0; i<3; i++) {
-    		if(i == missingDigitPlace){
-    			element = digitArray[missingID];
-    		} else {
-    			element = Math.floor((Math.random() * 9) + 1);
-    			while(seenDigit.indexOf(element) != -1){
-    				element = Math.floor((Math.random() * 9) + 1);
-    			}
-    			seenDigit.push(element);
-    		}
+        var seenDigit = [];
+        seenDigit.push(digitArray[missingID]);
 
-    		$('.choices').append('<input type="radio" name="choice" value=' + element + '> ' + element);
-    	}
+        console.log("missingdigit value: "+digitArray[missingID]);
 
+        for(var i=0; i<3; i++) {
+            if(i == missingDigitPlace){
+                element = digitArray[missingID];
+            } else {
+                element = Math.floor((Math.random() * 9) + 1);
+                while(seenDigit.indexOf(element) != -1){
+                    element = Math.floor((Math.random() * 9) + 1);
+                }
+                seenDigit.push(element);
+            }
+            // $('.choices').append('<input type="radio" name="choice" value=' + element + '> ' + element);
+        }
+
+        // Shuffle the array
+        //   http://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+        seenDigit = shuffle(seenDigit);
+
+        console.log("seenDigit");
+        console.log(seenDigit);
+
+        // Append the three numbers
+        for(var k=0; k<3; k++) {
+            // Append digits for each number
+            for(var i=0; i<digitArray.length; i++) {
+                if(i != missingID) {
+                    element = digitArray[i];
+                } else {
+                    element = '<span class="digit-option-missing">'+seenDigit[k]+'</span>';
+                }
+                // $('.digitList ul').append('<li>' + element + '</li>');
+                $('#digit-option'+k).append(element);
+            }
+        }
     	$('.waitingForParent').fadeOut();
     	$('.missingDigitScreen').fadeIn();
     });
 
+
+    $('.digit-option').click(function() {
+        // http://stackoverflow.com/questions/10780087/getting-integer-value-from-a-string-using-javascript-jquery
+        var guess = parseInt($(this).html().replace ( /[^\d.]/g, '' ));
+        console.log("missing digit guess: " + guess);
+        socket.emit('checkGuess', {guess: guess})
+    });
 	
-	$('#guess').click(function () {
-		var guess = $("input[name=choice]:checked").val();
-		socket.emit('checkGuess', {guess: guess})
-	});
+	// $('#guess').click(function () {
+	// 	var guess = $("input[name=choice]:checked").val();
+	// 	socket.emit('checkGuess', {guess: guess})
+	// });
 
 	socket.on('parentWin', function (data) {
 		$('.parentWin').modal('show');
@@ -494,6 +516,22 @@ $(document).ready(function(){
         }
         console.log("sum: "+sum);
         $('#nest-total-text').html(sum);
+    }
+
+    // Function to shuffle an array
+    function shuffle(array) {
+      var currentIndex = array.length, temporaryValue, randomIndex;
+      // While there remain elements to shuffle...
+      while (0 !== currentIndex) {
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+      }
+      return array;
     }
 
 

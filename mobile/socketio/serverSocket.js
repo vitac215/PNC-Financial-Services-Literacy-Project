@@ -188,7 +188,9 @@ exports.init = function(io) {
 				}
 			}
 
-			if(data.guess == r.digitArray[r.missingId]) {
+			// if(data.guess == r.digitArray[r.missingId]) {
+			console.log("missing digit actual cost: "+r.cost);
+			if(data.guess == r.cost) {
 				io.sockets.connected[r.teenID].emit('teenWin', {id: r.teenID, playerType: 'teen', room: r});
 				io.sockets.connected[r.parentID].emit('teenWin', {id: r.parentID, playerType: 'parent', room: r});
 				// Call score counter
