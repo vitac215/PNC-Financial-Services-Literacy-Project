@@ -236,13 +236,19 @@ $(document).ready(function(){
 	// });
 
 	socket.on('parentWin', function (data) {
+        $('.gameover_msg').empty();
 		$('.parentWin').modal('show');
+        var msg = createMsg(data.playerType, "parentWin");
+        $('.gameover_msg').append(msg);
         initialize();
         socket.emit('startNewRound', {id: data.id, playerType: data.playerType, room: data.room});
 	});
 
 	socket.on('teenWin', function (data) {
+        $('.gameover_msg').empty();
 		$('.teenWin').modal('show');
+        var msg = createMsg(data.playerType, "teenWin");
+        $('.gameover_msg').append(msg);
         initialize();
         socket.emit('startNewRound', {id: data.id, playerType: data.playerType, room: data.room});
 	});
@@ -442,11 +448,13 @@ $(document).ready(function(){
         $('.parentWin').modal('hide');
         $('.teenWin').modal('hide');
 
+        $('.subCategory').empty();
+
         if (game == 'digit') {
             $('#categoryName').empty();
             $('#perValue').empty();
-            $('.digitList ul').empty();
-            $('.digitList ul').append('<li>$</li>');
+            // $('.digitList ul').empty();
+            // $('.digitList ul').append('<li>$</li>');
             $('.choices').empty();
         };
 
@@ -459,7 +467,7 @@ $(document).ready(function(){
         }
         if (game == 'balance') {
             $('.categoryNameBalance').empty();
-            $('.perValueBalance').empty();
+            $('#perValueBalance').empty();
             $('#bonkersNumber').empty();
             //$('##startVal').empty();
            //$('#balanceChoices').empty();
@@ -534,5 +542,107 @@ $(document).ready(function(){
       return array;
     }
 
+    // Function to create gameover messages
+    function createMsg(playerType, whoWins) {
+        var msg;
+        var random = -1;
+        if (whoWins == "parentWin") {
+            if (playerType == "parent") {
+                // Situation: parent wins
+                // Choose 1 comment from 5 for each situation
+                switch (random = Math.floor(Math.random() * 5)) {
+                    case 0:
+                        msg = "Nice job! You’re beating your kid at a video game!";
+                        break;
+                    case 1:
+                        msg = "Way to go!  Show ‘em who's boss!";
+                        break;
+                    case 2:
+                        msg = "Takin’ them to school!";
+                        break;
+                    case 3:
+                        msg = "Hey, you’re pretty good at this!";
+                        break;
+                    case 4:
+                        msg = "Maybe you should bet some free chores on this?";
+                        break;
+                }
+            }
+            else {
+                // Situation: teen loses
+                // Choose 1 comment from 5 for each situation
+                switch (random = Math.floor(Math.random() * 5)) {
+                    case 0:
+                        msg = "I hope you didn’t bet your allowance on this.";
+                        break;
+                    case 1:
+                        msg = "Aren’t you supposed to be better at video games than your parents?";
+                        break;
+                    case 2:
+                        msg = "Much loss. Very sad.";
+                        break;
+                    case 3:
+                        msg = "I remember my first video game.";
+                        break;
+                    case 4:
+                        msg = "Do it the same way, but this time better.";
+                        break;
+                }
+            }
+        }
+        // Teen wins
+        else {
+            if (playerType == "parent") {
+                // Situation: parent loses
+                // Choose 1 comment from 6 for each situation
+                switch (random = Math.floor(Math.random() * 6)) {
+                    case 0:
+                        msg = "Points are like money, they don’t grow on trees.";
+                        break;
+                    case 1:
+                        msg = "You know what they say: kids always end up smarter than their parents.";
+                        break;
+                    case 2:
+                        msg = "They are probably tweeting about this right now.";
+                        break;
+                    case 3:
+                        msg = "Do it the same way, but this time better.";
+                        break;
+                    case 4:
+                        msg = "What, did you forget your coffee this morning?";
+                        break;
+                    case 5:
+                        msg = "I mean, I’m not surprised your kid is beating you at a video game.";
+                        break;
+                }
+            }
+            else {
+                // Situation: teen wins
+                // Choose 1 comment from 5 for each situation
+                switch (random = Math.floor(Math.random() * 6)) {
+                    case 0:
+                        msg = "If this score were a report card, we’d put it up on the fridge.";
+                        break;
+                    case 1:
+                        msg = "Clearly, parents don’t know everything.";
+                        break;
+                    case 2:
+                        msg = "Nice job! Beating your parents at their own game.";
+                        break;
+                    case 3:
+                        msg = "It’s like they say: kids always end up smarter than their parents.";
+                        break;
+                    case 4:
+                        msg = "Keep it up!  Maybe they’ll buy you DQ after this...";
+                        break;
+                    case 5:
+                        msg = "You’ve clearly been doing your homework!";
+                        break;
+                }
+            }
+        }
+        // console.log("gameover msg: "+msg);
+        return msg;
+    }
 
 });
