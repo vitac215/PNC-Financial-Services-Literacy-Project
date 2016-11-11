@@ -142,7 +142,8 @@ exports.init = function(io) {
 					rooms[i].missingId = Math.floor((Math.random() * (rooms[i].digitArray.length-1)) + 1);
 					
 					// bonkers
-					rooms[i].guess = Math.floor((Math.random() * (data.cost*1.5)) + data.cost*0.5);
+					// bonker choice will be up/down within 30% of the original number
+					rooms[i].guess = Math.floor((Math.random() * (data.cost*1.3)) + data.cost*0.7);
 					console.log("bonkers");
 					console.log("bonkers number guess: "+rooms[i].guess);
 
