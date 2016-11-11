@@ -168,11 +168,11 @@ exports.init = function(io) {
 			console.log(r);
 			io.sockets.connected[r.parentID].emit('waitForTeen');
 			if(r.getGame() == "digit") {
-				io.sockets.connected[r.teenID].emit('startDigit', {digits: r.digitArray, missing: r.missingId, per: r.per, category: r.category});
+				io.sockets.connected[r.teenID].emit('startDigit', {digits: r.digitArray, missing: r.missingId, per: r.per, category: r.category, item: r.item});
 			} else if(r.getGame() == "bonkers") {
-				io.sockets.connected[r.teenID].emit('startBonkers', {guess: r.guess, per: r.per, category: r.category});
+				io.sockets.connected[r.teenID].emit('startBonkers', {guess: r.guess, per: r.per, category: r.category, item: r.item});
 			} else if(r.getGame() == "balance") {
-				io.sockets.connected[r.teenID].emit('startBalance', {per: r.per, category: r.category, displayVal: r.displayVal, val1: r.val1, val2: r.val2, val3: r.val3});
+				io.sockets.connected[r.teenID].emit('startBalance', {per: r.per, category: r.category, item: r.item, displayVal: r.displayVal, val1: r.val1, val2: r.val2, val3: r.val3});
 			}
 		});
 

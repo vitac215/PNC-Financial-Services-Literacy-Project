@@ -124,10 +124,10 @@
 			  	<div id = "categorySelect">
 			  	<h4>Item:
 			  		<select id="item" name="item">
-						<option value="electric">Electric</option>
-						<option value="water">Water</option>
-						<option value="gas">Gas</option>
-						<option value="rent">Rent</option>
+						<option value="electric">electric</option>
+						<option value="water">water</option>
+						<option value="gas">gas</option>
+						<option value="rent">rent</option>
 					</select><br><br>
 
 					Cost: <input id="cost" type="number" name="cost" min="0" step="1"><br><br>
@@ -150,8 +150,8 @@
 					</div>
 			  	<div class="gameDescription">
 				  	Category: <span id="categoryName"></span><br>
-				  	Guess the Cost: Cost payment per <span id="perValue"></span><br>
-				  	<h5>Directions: Select the missing number</h5>
+				  	Guess the Cost: <span id="perValue"></span><span id="subCategory"></span></br>
+				  	<h5 class="directions">Directions: Select the missing number</h5>
 			  	</div><br>
 
 			  		<!--<div class = digitList>
@@ -176,7 +176,7 @@
 							</div>
 							<div class="modal-body">
 								<p>+1 Point for teen</p>
-								<p>You've won the game</p>
+								<p class="teen-win-msg">You've won the game</p>
 							</div>
 						</div>
 					</div>
@@ -191,7 +191,7 @@
 							</div>
 							<div class="modal-body">
 								<p>+1 Point for parent</p>
-								<p>You've lost the game</p>
+								<p class="parent-win-msg">You've lost the game</p>
 							</div>
 						</div>
 					</div>
@@ -212,7 +212,7 @@
 			  	<div class="gameDescription">
 				  	Category: <span id="categoryNameBonkers"></span><br>
 				  	Guess the Cost: Cost payment per <span id="perValueBonkers"></span><br>
-				  	<h5>Directions: Indicate where the price is HIGHER or LOWER</h5>
+				  	<h5 class="directions">Directions: Indicate where the price is HIGHER or LOWER</h5>
 			  	</div><br>
 
 					<div class="bonkers-counter-div">
@@ -243,7 +243,7 @@
 			  	<div class="gameDescription">
 				  	Category: <span class="categoryNameBalance"></span><br>
 				  	Guess the Cost: Cost payment per <span class="perValueBalance"></span><br>
-				  	<h5>Select bags to guess the amount spent on <span class="categoryNameBalance"></span> per <span class="perValueBalance"></span></h5>
+				  	<h5 class="directions">Description: Select bags to guess the amount spent on <span class="categoryNameBalance"></span> per <span class="perValueBalance"></span></h5>
 			  	</div><br>
 					<div class="balance-game-div">
 
@@ -341,6 +341,7 @@
 					</div>
 					<div class="modal-body">
 						<p>+1 Point for teen</p>
+						<p class="teen-win-msg"></p>
 					</div>
 				</div>
 			</div><
@@ -355,6 +356,7 @@
 					</div>
 					<div class="modal-body">
 						<p>+1 Point for parent</p>
+						<p class="parent-win-msg"></p>
 					</div>
 				</div>
 			</div>

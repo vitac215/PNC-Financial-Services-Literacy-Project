@@ -169,7 +169,8 @@ $(document).ready(function(){
     socket.on('startDigit', function(data) {
         clearGameData('digit');
     	$('#categoryName').append(data.category);
-    	$('#perValue').append(data.per);
+    	$('#perValue').append(data.per+"ly ");
+        $('#subCategory').append(data.item);
     	var missingID = data.missing;
     	var digitArray = data.digits;
   		var element;
@@ -435,11 +436,10 @@ $(document).ready(function(){
     // Append sub-categories to the category for parent to input cost
     function appendItem(category) {
         if (category == "home"){
-            $("#item").append('<option value="rent">Rent</option>');
-            $("#item").append('<option value="electricity">Electricity</option>');
-            $("#item").append('<option value="water">Water</option>');
-            $("#item").append('<option value="electric">Electricity</option>');
-            $("#item").append('<option value="gas">Gas</option>');
+            $("#item").append('<option value="rent">rent</option>');
+            $("#item").append('<option value="electricity">electricity</option>');
+            $("#item").append('<option value="water">water</option>');
+            $("#item").append('<option value="gas">gas</option>');
         }
         if (category == "travel"){
 
