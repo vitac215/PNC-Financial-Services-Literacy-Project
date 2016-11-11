@@ -241,30 +241,45 @@ $(document).ready(function(){
         $('.bonkersScreen').fadeIn();
     });
 
-    // Toogle on and off the arrows
+    // // Toogle on and off the arrows
+    // $('.up-arrow-bonkers').click(function (){
+    //     $('.down-arrow-bonkers').toggle();
+    // });
+
+    // $('.down-arrow-bonkers').click(function (){
+    //     $('.up-arrow-bonkers').toggle();
+    // });
+
+    // Submit bonkers choice
     $('.up-arrow-bonkers').click(function (){
-        $('.down-arrow-bonkers').toggle();
-    });
-
-    $('.down-arrow-bonkers').click(function (){
-        $('.up-arrow-bonkers').toggle();
-    });
-
-    $('#guessBonkers').click(function () {
         var guess;
-        if ($('.down-arrow-bonkers').css('display') == 'none') {
-            guess = "up";
-        }
-        else if ($('.up-arrow-bonkers').css('display') == 'none') {
-            guess = "down";
-        }
-        else {
-            // Make sure the teen selects higher or lower before pressing the guess button
-            alert("Click the arrow to indicate whether you think the price is HIGHER or LOWER");
-            return false;
-        }
+        guess = "up";
+        console.log("bonkers-guess: "+guess);
         socket.emit('bonkersResult', {guess: guess});
     });
+    $('.down-arrow-bonkers').click(function (){
+        var guess;
+        guess = "down";
+        console.log("bonkers-guess: "+guess);
+        socket.emit('bonkersResult', {guess: guess});
+    });
+
+    // $('#guessBonkers').click(function () {
+    //     var guess;
+    //     // if ($('.down-arrow-bonkers').css('display') == 'none') {
+    //     //     guess = "up";
+    //     // }
+    //     // else if ($('.up-arrow-bonkers').css('display') == 'none') {
+    //     //     guess = "down";
+    //     // }
+    //     // else {
+    //     //     // Make sure the teen selects higher or lower before pressing the guess button
+    //     //     alert("Click the arrow to indicate whether you think the price is HIGHER or LOWER");
+    //     //     return false;
+    //     // }
+        
+    //     socket.emit('bonkersResult', {guess: guess});
+    // });
 
 
 
