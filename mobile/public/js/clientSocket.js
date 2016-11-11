@@ -172,7 +172,7 @@ $(document).ready(function(){
 
     	$('#categoryName').append(data.category);
     	$('#perValue').append(data.per+"ly ");
-        $('#subCategory').append(data.item);
+        $('.subCategory').append(data.item);
     	var missingID = data.missing;
     	var digitArray = data.digits;
   		var element;
@@ -263,7 +263,8 @@ $(document).ready(function(){
     socket.on('startBonkers', function (data) {
         clearGameData('bonkers');
         $('#categoryNameBonkers').append(data.category);
-        $('#perValueBonkers').append(data.per);
+        $('#perValueBonkers').append(data.per+"ly ");
+        $('.subCategory').append(data.item);
         $('#bonkersNumber').append(data.guess);
         $('.waitingForParent').fadeOut();
         $('.bonkersScreen').fadeIn();
@@ -316,6 +317,8 @@ $(document).ready(function(){
         clearGameData('balance');
         $('.categoryNameBalance').append(data.category);
         $('.perValueBalance').append(data.per);
+        $('#perValueBalance').append(data.per+"ly ");
+        $('.subCategory').append(data.item);
         $('.waitingForParent').fadeOut();
         $('.balanceScreen').fadeIn();
 
@@ -467,6 +470,7 @@ $(document).ready(function(){
         }
         if (game == 'balance') {
             $('.categoryNameBalance').empty();
+            $('.perValueBalance').empty();
             $('#perValueBalance').empty();
             $('#bonkersNumber').empty();
             //$('##startVal').empty();
