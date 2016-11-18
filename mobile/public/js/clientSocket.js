@@ -126,28 +126,28 @@ $(document).ready(function(){
         socket.emit('categorySelected', {category: "fun"});  
     });
 
-    $('#finance').click(function () {
+    $('#shopping').click(function () {
         // Clear the category
         $('#category').empty();
         $('.spinCategory').fadeOut();
-        $('#category').append("Finance");
+        $('#category').append("shopping");
         $('.inputInformation').fadeIn();
         // Clear the item
         $("#item").empty();
-        appendItem("finance");
-        socket.emit('categorySelected', {category: "finance"});  
+        appendItem("shopping");
+        socket.emit('categorySelected', {category: "shopping"});  
     });
 
     $('#living_expenses').click(function () {
         // Clear the category
         $('#category').empty();
         $('.spinCategory').fadeOut();
-        $('#category').append("Purchases");
+        $('#category').append("living expenses");
         $('.inputInformation').fadeIn();
         // Clear the item
         $("#item").empty();
-        appendItem("purchases");
-        socket.emit('categorySelected', {category: "purchases"});  
+        appendItem("living_expenses");
+        socket.emit('categorySelected', {category: "living_expenses"});  
     });
 
 
@@ -200,7 +200,6 @@ $(document).ready(function(){
     socket.on('startDigit', function(data) {
         clearGameData('digit');
         $('.digit-option').empty();
-
     	$('#categoryName').append(data.category);
     	$('#perValue').append(data.per+"ly ");
         $('.subCategory').append(data.item);
@@ -346,7 +345,7 @@ $(document).ready(function(){
     // BALANCE GAME
     socket.on('startBalance', function (data) {
         clearGameData('balance');
-        $('.categoryNameBalance').append(data.category);
+        $('#categoryNameBalance').append(data.category);
         $('.perValueBalance').append(data.per);
         $('#perValueBalance').append(data.per+"ly ");
         $('.subCategory').append(data.item);
@@ -529,21 +528,31 @@ $(document).ready(function(){
     function appendItem(category) {
         if (category == "home"){
             $("#item").append('<option value="rent">rent</option>');
+            $("#item").append('<option value="mortgage">mortgage</option>');
             $("#item").append('<option value="electricity">electricity</option>');
-            $("#item").append('<option value="water">water</option>');
+            $("#item").append('<option value="internet">internet</option>');
             $("#item").append('<option value="gas">gas</option>');
         }
         if (category == "travel"){
-
+            $("#item").append('<option value="hotels">hotels</option>');
+            $("#item").append('<option value="flights">flights</option>');
+            $("#item").append('<option value="rental car">rental car</option>');
         }
         if (category == "fun"){
-
+            $("#item").append('<option value="dining out">dining out</option>');
+            $("#item").append('<option value="movies">movies</option>');
+            $("#item").append('<option value="sports">sports</option>');           
         }
-        if (category == "finance"){
-
+        if (category == "shopping"){
+            $("#item").append('<option value="clothes">clothes</option>'); 
+            $("#item").append('<option value="electronics">electronics</option>'); 
+            $("#item").append('<option value="games">games</option>'); 
         }
         if (category == "living_expenses"){
-
+            $("#item").append('<option value="automobiles">automobiles</option>'); 
+            $("#item").append('<option value="groceries">groceries</option>'); 
+            $("#item").append('<option value="medical expenses">medical expenses</option>');
+            $("#item").append('<option value="braces">braces</option>');  
         }
     }
 
