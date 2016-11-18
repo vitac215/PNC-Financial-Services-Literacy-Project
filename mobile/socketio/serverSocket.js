@@ -148,7 +148,12 @@ exports.init = function(io) {
 					
 					// bonkers
 					// bonker choice will be up/down within 30% of the original number
+
 					rooms[i].guess = Math.floor((Math.random() * (data.cost*1.3)) + data.cost*0.7);
+					// Make sure that he guess cost is not equal to the actual cost
+					while (rooms[i].guess == data.cost) {
+						rooms[i].guess = Math.floor((Math.random() * (data.cost*1.3)) + data.cost*0.7);
+					}
 					console.log("bonkers");
 					console.log("bonkers number guess: "+rooms[i].guess);
 
@@ -172,7 +177,7 @@ exports.init = function(io) {
 
 			console.log("game " + r.getGame());
 			console.log(r);
-			io.sockets.connected[r.parentID].emit('waitingForTeenToChooseGame', {room: r});
+			io.sockets.connected[r.parentID].emit('waitForTeen', {room: r});
 			if(r.getGame() == "digit") {
 				io.sockets.connected[r.teenID].emit('startDigit', {digits: r.digitArray, missing: r.missingId, per: r.per, category: r.category, item: r.item});
 			} else if(r.getGame() == "bonkers") {

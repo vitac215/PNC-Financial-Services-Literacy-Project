@@ -49,7 +49,8 @@ $(document).ready(function(){
 		$('.initialPage').fadeOut();
 		$('.spinGame').fadeIn();
         var parentName = data.room['parentName'];
-        appendName(parentName, 'parentName');
+        var teenName = data.room['teenName'];
+        appendName(parentName, teenName);
         updateScore(data.room);
     });
 
@@ -173,8 +174,9 @@ $(document).ready(function(){
         $('.waitingForTeen').fadeOut();
         $('.waitingForTeenToJoin').fadeOut();
         $('.waitingForTeenToChooseGame').fadeIn();
+        var parentName = data.room['parentName'];
         var teenName = data.room['teenName'];
-        appendName(teenName, 'teenName');
+        appendName(parentName, teenName);
     });
 
     socket.on('waitForTeen', function(data) {
@@ -184,8 +186,9 @@ $(document).ready(function(){
         $('.waitingForTeenToJoin').fadeOut();
         $('.waitingForTeenToChooseGame').fadeOut();
     	$('.waitingForTeen').fadeIn();
+        var parentName = data.room['parentName'];
         var teenName = data.room['teenName'];
-        appendName(teenName, 'teenName');
+        appendName(parentName, teenName);
     });
 
 
@@ -510,12 +513,12 @@ $(document).ready(function(){
     };
 
     // Append name to waiting messages
-    function appendName(name, type) {
-        console.log(name);
-        console.log(type);
+    function appendName(parentName, teenName) {
         // Empty the name field and append name
-        $('.'+type).empty();
-        $('.'+type).html(name);
+        $('.teenName').empty();
+        $('.teenName').html(teenName);
+        $('.parentName').empty();
+        $('.parentName').html(parentName);
     }
 
     // Append sub-categories to the category for parent to input cost

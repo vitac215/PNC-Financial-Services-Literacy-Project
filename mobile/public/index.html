@@ -72,6 +72,7 @@
 					</div>
 				</div>
 			  <div class="col-xs-12 col-md-4 col-centered">
+			  	<h3 class="bold">Choose A Game</h3>
 			  	<button id="bonkers" class="btn btn-info btn-lg" type="button">Bonkers</button><br>
 			  	<button id="digit" class="btn btn-info btn-lg" type="button">Missing Digit</button><br>
 <!-- 			  	<button id="cliff" class="btn btn-info btn-lg" type="button">Cliff Hanger</button><br>
@@ -93,6 +94,7 @@
 			</div>
 			<div class="row">
 			  <div class="col-xs-12 col-md-4 col-centered">
+			  <h3 class="bold">Choose An Expense Category</h3>
 			  	<button id="home" class="btn btn-info btn-lg" type="button">Home</button><br>
 			  	<button id="travel" class="btn btn-info btn-lg" type="button">Travel</button><br>
 			  	<button id="fun" class="btn btn-info btn-lg" type="button">Fun</button><br>
@@ -114,7 +116,7 @@
 		<div class="container waitingForParent">
 			<div class="row">
 			  <div class="col-xs-12 col-md-4 col-centered">
-			  	<h3>Waiting for <span class="parentName">parent</span> to enter the cost</h3>
+			  	<h3>Waiting for <span class="parentName">parent</span> to enter expense information</h3>
 			  </div>
 			</div>
 		</div>
@@ -138,9 +140,9 @@
 		<div class="container inputInformation">
 			<div class="row">
 			  <div class="col-xs-12 col-md-4 col-centered">
-			  	<h3>Category: <span id="category"></span></h3>
+			  	<h3>Enter your expense on <span id="category" class="bold"></span></h3>
 			  	<div id = "categorySelect">
-			  	<h4>Item:
+			  	<h4>Sub-category:
 			  		<select id="item" name="item">
 						<option value="electric">electric</option>
 						<option value="water">water</option>
@@ -149,13 +151,13 @@
 					</select><br><br>
 
 					Cost: <input id="cost" type="number" name="cost" min="0" step="1"><br><br>
-					Per:
+					Per: <br>
 					<input type="radio" name="per" value="week" checked> Week<br>
 					<input type="radio" name="per" value="month"> Month<br>
 					<input type="radio" name="per" value="year"> Year<br><br>
 				</h4>
 				</div>
-				<button id="costSubmit" class="btn btn-info btn-lg" type="button">Done</button>
+				<button id="costSubmit" class="btn btn-info btn-lg" type="button">Enter Cost</button>
 			  </div>
 			</div>
 		</div>
@@ -228,8 +230,8 @@
 					</div>
 
 			  	<div class="gameDescription">
-				  	Category: <span id="categoryNameBonkers"></span><br>
-				  	Guess the Cost: <span id="perValueBonkers"></span><span class="subCategory"></span></br>
+				  	<!-- Category: <span id="categoryNameBonkers"></span><br> -->
+				  	Guess the <span id="perValueBonkers"></span> expense on <span class="subCategory"></span></br>
 				  	<h5 class="directions">Directions: Indicate where the price is HIGHER or LOWER</h5>
 			  	</div><br>
 
@@ -359,7 +361,7 @@
 						<h4 class="modal-title">Correct</h4>
 					</div>
 					<div class="modal-body">
-						<p>+1 Point for teen</p>
+						<p>+1 Point for <span class="teenName">teen</span></p>
 						<p class="gameover_msg"></p>
 					</div>
 				</div>
@@ -374,7 +376,7 @@
 						<h4 class="modal-title">Wrong</h4>
 					</div>
 					<div class="modal-body">
-						<p>+1 Point for parent</p>
+						<p>+1 Point for <span class="parentName">parent</span></p>
 						<p class="gameover_msg"></p>
 					</div>
 				</div>
