@@ -40,15 +40,17 @@ exports.init = function(io) {
 				var r = new Room(data.room);
 				if(data.playerType == "parent") {
 					r.parentID = socket.id;
+					r.parentName = data.username;
 				} else {
 					r.teenID = socket.id;
+					r.teenName = data.username;
 				}
 
 				rooms.push(r);
 
 				if(data.playerType == "parent"){
 					// Wait for teen to enter and choose a game
-					io.sockets.connected[r.parentID].emit('waitForTeen');
+					io.sockets.connected[r.parentID].emit('waitForTeenToJoin', {room: r});
 					//io.sockets.connected[r.parentID].emit('choseCategory');
 				} else {
 					io.sockets.connected[r.teenID].emit('choseGame', {room: r});
@@ -78,14 +80,17 @@ exports.init = function(io) {
 
 				if(data.playerType == "parent") {
 					r.parentID = socket.id;
+					r.parentName = data.username;
 				} else {
 					r.teenID = socket.id;
+					r.teenName = data.username;
 				}
 
 				if(data.player == "parent"){
 					io.sockets.connected[r.parentID].emit('choseCategory', {room: r});
 				} else {
 					io.sockets.connected[r.teenID].emit('choseGame', {room: r});
+					io.sockets.connected[r.parentID].emit('waitingForTeenToChooseGame', {room: r});
 				}
 			}
 		}); 

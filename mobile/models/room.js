@@ -3,6 +3,8 @@ function Room(id) {
 	this.roomID = id;
 	this.parentID;
 	this.teenID;
+	this.parentName;
+	this.teenName;
 	this.game = "";
 	this.category = "";
 	this.item;
@@ -37,6 +39,14 @@ Room.prototype.getParent = function() { // checks if the player is an artist
 
 Room.prototype.getTeen = function() { // checks if the player is an artist
 	return this.teenID;
+}
+
+Room.prototype.getParentName = function() { // checks if the player is an artist
+	return this.parentName;
+}
+
+Room.prototype.getTeenName = function() { // checks if the player is an artist
+	return this.teenName;
 }
 
 Room.prototype.getGame = function() { // checks if the player is an artist

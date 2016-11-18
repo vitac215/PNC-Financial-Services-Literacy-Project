@@ -156,11 +156,34 @@ $(document).ready(function(){
         }
     });
 
+    socket.on('waitForTeenToJoin', function(data) {
+        $('.initialPage').fadeOut();
+        $('.inputInformation').fadeOut();
+        $('.waitingForTeenToJoin').fadeIn();
+        // Empty and append teen's name
+        console.log(data);
+        $('.teenName').empty();
+        $('.teenName').html(data.room['teenName']);
+    });
+
+    socket.on('waitingForTeenToChooseGame', function(data) {
+        $('.initialPage').fadeOut();
+        $('.inputInformation').fadeOut();
+        $('.waitingForTeenToJoin').fadeOut();
+        $('.waitingForTeen').fadeIn();
+        // Empty and append teen's name
+        $('.teenName').empty();
+        $('.teenName').html(data.room['teenName']);
+    });
 
     socket.on('waitForTeen', function(data) {
         $('.initialPage').fadeOut();
     	$('.inputInformation').fadeOut();
+        $('.waitingForTeenToJoin').fadeOut();
     	$('.waitingForTeen').fadeIn();
+        // Empty and append teen's name
+        $('.teenName').empty();
+        $('.teenName').html(data.room['teenName']);
     });
 
 
