@@ -578,7 +578,7 @@ $(document).ready(function(){
         if ($('#ball-scale-text-3').html() != "") {
             sum += parseInt($('#ball-scale-text-3').html());
         }
-        console.log("sum: "+sum);
+        // console.log("sum: "+sum);
         $('#nest-total-text').html(sum);
     }
 
