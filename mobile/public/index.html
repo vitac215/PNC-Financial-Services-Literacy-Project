@@ -63,6 +63,14 @@
 
 		<div class="container spinGame">
 			<div class="row">
+				<div class="row score">
+					<div class="col-xs-6 col-md-6 parentScore">
+						<span class="parentName">Parent</span> Score: <span id="parentScoreGame">0</span>
+					</div>
+					<div class="col-xs-6 col-md-6 teenScore">
+						<span class="teenName">Teen</span> Score: <span id="teenScoreGame">0</span>
+					</div>
+				</div>
 			  <div class="col-xs-12 col-md-4 col-centered">
 			  	<button id="bonkers" class="btn btn-info btn-lg" type="button">Bonkers</button><br>
 			  	<button id="digit" class="btn btn-info btn-lg" type="button">Missing Digit</button><br>
@@ -71,17 +79,18 @@
 			  	<button id="balance" class="btn btn-info btn-lg" type="button">Balance</button>
 			  </div>
 			</div>
-			<div class="row score">
-				<div class="col-xs-6 col-md-6 parentScore">
-					<span class="parentName">Parent</span> Score: <span id="parentScoreGame">0</span>
-				</div>
-				<div class="col-xs-6 col-md-6 teenScore">
-					<span class="teenName">Teen</span> Score: <span id="teenScoreGame">0</span>
-				</div>
-			</div>
+
 		</div>
 
 		<div class="container spinCategory">
+			<div class="row score">
+				<div class="col-xs-6 col-md-6 parentScore">
+					Parent Score: <span id="parentScoreCategory">0</span>
+				</div>
+				<div class="col-xs-6 col-md-6 teenScore">
+					Teen Score: <span id="teenScoreCategory">0</span>
+				</div>
+			</div>
 			<div class="row">
 			  <div class="col-xs-12 col-md-4 col-centered">
 			  	<button id="home" class="btn btn-info btn-lg" type="button">Home</button><br>
@@ -91,14 +100,7 @@
 			  	<button id="purchases" class="btn btn-info btn-lg" type="button">Purchases</button><br>
 			  </div>
 			</div>
-			<div class="row score">
-				<div class="col-xs-6 col-md-6 parentScore">
-					Parent Score: <span id="parentScoreCategory">0</span>
-				</div>
-				<div class="col-xs-6 col-md-6 teenScore">
-					Teen Score: <span id="teenScoreCategory">0</span>
-				</div>
-			</div>
+
 		</div>
 
 		<div class="container waitingForTeenToJoin">
