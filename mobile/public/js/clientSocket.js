@@ -36,13 +36,16 @@ $(document).ready(function(){
 	});
 
     socket.on('wrongRoom', function(data) {
-        $('.wrongCode').modal()
+        $('.wrongCode').modal();
     });
 
     socket.on('roomExists', function(data) {
-        $('.roomExists').modal()
+        $('.roomExists').modal();
     });
 
+    // socket.on('costWrongFormat'), function(data) {
+    //     $('.costWrongFormat').modal();
+    // }
 
     // Choose game (teen)
 	socket.on('choseGame', function(data){
@@ -153,7 +156,7 @@ $(document).ready(function(){
         console.log("cost submit: "+cost);
         // Validate the format of the cost input
         if ( (isNaN(cost)) || (cost < 10) ) {
-            alert("Please enter the cost in correct format. It should be a number larger than 10");
+           $('.costWrongFormat').modal();
         }
         else {
             var item =  $('#item :selected').text();
