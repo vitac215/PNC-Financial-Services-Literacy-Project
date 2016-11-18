@@ -17,11 +17,11 @@
 			<div class="row">
 			  <div class="col-xs-12 col-md-4 col-centered">
 				<br><br><img src="css/images/priceisright.svg" alt="Price is Right Logo" id="logo"><br>
-			  	<h2>Price Game</h2><br>
+			  	<h2 class="bold">Price Game</h2><br>
 			  	<h3>Welcome!</h3><br>
 				<div class="form-group input-group-lg">
-				  <input id="username" type="text" name="username" class="form-control input-lg" placeholder="First Name"><br>
-				  <input id="room" type="text" name="room" class="form-control input-lg" placeholder="Game Room Name"><br>
+				  <input id="username" type="text" name="username" class="form-control input-lg input" placeholder="First Name"><br>
+				  <input id="room" type="text" name="room" class="form-control input-lg input" placeholder="Game Room Name"><br>
 				  <div class="playerSelect">
 					  <input type="radio" name="player" value="parent" checked="checked"> Parent<br>
 					  <input type="radio" name="player" value="teen"> Teen<br>
@@ -169,9 +169,9 @@
 						<img src="images/missing-digit-heading.png" alt="Missing Digit Title" width="100%">
 					</div>
 			  	<div class="gameDescription">
-				  	Category: <span id="categoryName"></span><br>
-				  	Guess the Cost: <span id="perValue"></span><span class="subCategory"></span></br>
-				  	<h5 class="directions">Directions: Select the missing number</h5>
+				  	<!-- Category: <span id="categoryName"></span><br> -->
+				  	<h5 class="directions">Guess the <span id="perValue"></span> expense on <span class="subCategory"></span></h5>
+				  	<!-- <h5 class="directions">Select the missing number</h5> -->
 			  	</div><br>
 
 			  		<!--<div class = digitList>
@@ -231,8 +231,8 @@
 
 			  	<div class="gameDescription">
 				  	<!-- Category: <span id="categoryNameBonkers"></span><br> -->
-				  	Guess the <span id="perValueBonkers"></span> expense on <span class="subCategory"></span></br>
-				  	<h5 class="directions">Directions: Indicate where the price is HIGHER or LOWER</h5>
+				  	<!-- Guess the <span id="perValueBonkers"></span> expense on <span class="subCategory"></span></br> -->
+				  	<h5 class="directions">Indicate whether you think the <span id="perValueBonkers"></span> expense on <span class="subCategory"></span> is HIGHER or LOWER than: </h5>
 			  	</div><br>
 
 					<div class="bonkers-counter-div">
@@ -262,9 +262,8 @@
 						<img src="images/balance-heading.png" alt="Bonkers Title" width="100%">
 					</div>
 			  	<div class="gameDescription">
-				  	Category: <span class="categoryNameBalance"></span><br>
-				  	Guess the Cost: <span id="perValueBalance"></span><span class="subCategory"></span></br>
-				  	<h5 class="directions">Description: Select bags to guess the amount spent on <span class="subCategory"></span> per <span class="perValueBalance"></span></h5>
+				  	<!-- Category: <span class="categoryNameBalance"></span><br> -->
+				  	<h5 class="directions">Select bags to guess the amount spent on <span class="subCategory"></span> per <span class="perValueBalance"></span></h5>
 			  	</div><br>
 					<div class="balance-game-div">
 

@@ -18,6 +18,11 @@ body {
   width: 200px;
 }
 
+.input {
+  margin: auto;
+  width: 90%;
+}
+
 .gameDescription{
   background-color: $desc-color;
   text-align: left;
@@ -26,7 +31,6 @@ body {
 
 .directions {
   font-size: 18px;
-  font-weight: bold;
 }
 
 #logo {

@@ -355,10 +355,11 @@ $(document).ready(function(){
         $('#ball-scale-text-0').html(data.displayVal);
         $('#nest-total-text').html(data.displayVal);
 
-        // Append the guesses
-        balanceAppend('ball-option-text-1', data.val1);
-        balanceAppend('ball-option-text-2', data.val2);
-        balanceAppend('ball-option-text-3', data.val3);
+        // Append the guesses randomly
+        console.log(data);
+        balanceAppend('ball-option-text-1', data.room.val[0]);
+        balanceAppend('ball-option-text-2', data.room.val[1]);
+        balanceAppend('ball-option-text-3', data.room.val[2]);
 
         // Map the relationship between the option balls and scale balls
         $('#ball-option-1').click(function() {
@@ -367,7 +368,7 @@ $(document).ready(function(){
                 $('#ball-option-1').hide();
                 $('#ball-scale-1').show();
                 $('#ball-option-text-1').html("");
-                balanceAppend('ball-scale-text-1', data.val1);
+                balanceAppend('ball-scale-text-1', data.room.val[0]);
                 updateScale();
             }
         });
@@ -377,17 +378,17 @@ $(document).ready(function(){
                 $('#ball-option-2').hide();
                 $('#ball-scale-2').show();
                 $('#ball-option-text-2').html("");
-                balanceAppend('ball-scale-text-2', data.val2);
+                balanceAppend('ball-scale-text-2', data.room.val[1]);
                 updateScale();
             }
         });
         $('#ball-option-3').click(function() {
-            // If option ball 2 has value, move it onto scale ball 2
+            // If option ball 3 has value, move it onto scale ball 3
             if ($(this).html() != "") {
                 $('#ball-option-3').hide();
                 $('#ball-scale-3').show();
                 $('#ball-option-text-3').html("");
-                balanceAppend('ball-scale-text-3', data.val2);
+                balanceAppend('ball-scale-text-3', data.room.val[2]);
                 updateScale();
             }
         });
@@ -398,7 +399,7 @@ $(document).ready(function(){
                 $('#ball-scale-1').hide();
                 $('#ball-option-1').show();
                 $('#ball-scale-text-1').html("");
-                balanceAppend('ball-option-text-1', data.val1);
+                balanceAppend('ball-option-text-1', data.room.val[0]);
                 updateScale();
             }
         });
@@ -408,7 +409,7 @@ $(document).ready(function(){
                 $('#ball-scale-2').hide();
                 $('#ball-option-2').show();
                 $('#ball-scale-text-2').html("");
-                balanceAppend('ball-option-text-2', data.val2);
+                balanceAppend('ball-option-text-2', data.room.val[1]);
                 updateScale();
             }
         });
@@ -418,7 +419,7 @@ $(document).ready(function(){
                 $('#ball-scale-3').hide();
                 $('#ball-option-3').show();
                 $('#ball-scale-text-3').html("");
-                balanceAppend('ball-option-text-3', data.val2);
+                balanceAppend('ball-option-text-3', data.room.val[2]);
                 updateScale();
             }
         });

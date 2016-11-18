@@ -20,9 +20,10 @@ function Room(id) {
 
 	// variables for balance
 	this.displayVal;
-	this.val1;
-	this.val2;
-	this.val3;
+	// this.val1;
+	// this.val2;
+	// this.val3;
+	this.val = [];
 
 	// variables for score counter
 	this.teenScore = 0;

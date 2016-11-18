@@ -164,13 +164,16 @@ exports.init = function(io) {
 					console.log("balance displayVal: "+rooms[i].displayVal);
 					tempCost = tempCost - rooms[i].displayVal;
 
-					rooms[i].val1 = Math.floor((Math.random() * (data.cost-1) + 1));
-					rooms[i].val2 = tempCost - rooms[i].val1;
-					rooms[i].val3 = Math.floor((Math.random() * (data.cost-1) + 1));
-					while(rooms[i].val3 == rooms[i].val1) {
-						rooms[i].val3 = Math.floor((Math.random() * (data.cost-1) + 1));	
+					rooms[i].val[0] = Math.floor((Math.random() * (data.cost-1) + 1));
+					rooms[i].val[1] = tempCost - rooms[i].val[0];
+					rooms[i].val[2] = Math.floor((Math.random() * (data.cost-1) + 1));
+					while(rooms[i].val[2] == rooms[i].val[0]) {
+						rooms[i].val[2] = Math.floor((Math.random() * (data.cost-1) + 1));	
 					}
-
+					// shuffle the array
+					console.log(rooms[i].val)
+					shuffle(rooms[i].val);
+					console.log(rooms[i].val);
 					break;
 				}
 			}
@@ -183,7 +186,7 @@ exports.init = function(io) {
 			} else if(r.getGame() == "bonkers") {
 				io.sockets.connected[r.teenID].emit('startBonkers', {guess: r.guess, per: r.per, category: r.category, item: r.item});
 			} else if(r.getGame() == "balance") {
-				io.sockets.connected[r.teenID].emit('startBalance', {per: r.per, category: r.category, item: r.item, displayVal: r.displayVal, val1: r.val1, val2: r.val2, val3: r.val3});
+				io.sockets.connected[r.teenID].emit('startBalance', {per: r.per, category: r.category, item: r.item, displayVal: r.displayVal, room: r});
 			}
 		});
 
@@ -251,13 +254,13 @@ exports.init = function(io) {
 
 			var sum = 0;
 			if(data.one) {
-				sum += r.val1;
+				sum += r.val[0];
 			}
 			if(data.two) {
-				sum += r.val2;
+				sum += r.val[1];
 			}
 			if(data.three) {
-				sum += r.val3;
+				sum += r.val[2];
 			}
 			if((sum+r.displayVal) == r.cost) {
 				io.sockets.connected[r.teenID].emit('teenWin', {id: r.teenID, playerType: 'teen', room: r});
@@ -325,4 +328,17 @@ exports.init = function(io) {
 		this.val2 = '';
 		this.val3 = '';
 	}
+
+	// Shuffle an array
+	// http://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array-in-javascript
+	function shuffle(a) {
+	    var j, x, i;
+	    for (i = a.length; i; i--) {
+	        j = Math.floor(Math.random() * i);
+	        x = a[i - 1];
+	        a[i - 1] = a[j];
+	        a[j] = x;
+	    }
+	}
+
 }
