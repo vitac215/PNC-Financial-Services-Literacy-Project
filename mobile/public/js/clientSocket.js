@@ -48,13 +48,18 @@ $(document).ready(function(){
 	socket.on('choseGame', function(data){
 		$('.initialPage').fadeOut();
 		$('.spinGame').fadeIn();
+        var parentName = data.room['parentName'];
+        appendName(parentName, 'parentName');
         updateScore(data.room);
     });
 
     // Choose category (parent)
 	socket.on('choseCategory', function(data){
+        console.log("here");
 		$('.initialPage').fadeOut();
         $('.waitingForTeen').fadeOut();
+        $('.waitingForTeenToJoin').fadeOut();
+        $('.waitingForTeenToChooseGame').fadeOut();
 		$('.spinCategory').fadeIn();
         updateScore(data.room);
     });
@@ -160,30 +165,27 @@ $(document).ready(function(){
         $('.initialPage').fadeOut();
         $('.inputInformation').fadeOut();
         $('.waitingForTeenToJoin').fadeIn();
-        // Empty and append teen's name
-        console.log(data);
-        $('.teenName').empty();
-        $('.teenName').html(data.room['teenName']);
     });
 
     socket.on('waitingForTeenToChooseGame', function(data) {
         $('.initialPage').fadeOut();
         $('.inputInformation').fadeOut();
+        $('.waitingForTeen').fadeOut();
         $('.waitingForTeenToJoin').fadeOut();
-        $('.waitingForTeen').fadeIn();
-        // Empty and append teen's name
-        $('.teenName').empty();
-        $('.teenName').html(data.room['teenName']);
+        $('.waitingForTeenToChooseGame').fadeIn();
+        var teenName = data.room['teenName'];
+        appendName(teenName, 'teenName');
     });
 
     socket.on('waitForTeen', function(data) {
+        console.log(data);
         $('.initialPage').fadeOut();
     	$('.inputInformation').fadeOut();
         $('.waitingForTeenToJoin').fadeOut();
+        $('.waitingForTeenToChooseGame').fadeOut();
     	$('.waitingForTeen').fadeIn();
-        // Empty and append teen's name
-        $('.teenName').empty();
-        $('.teenName').html(data.room['teenName']);
+        var teenName = data.room['teenName'];
+        appendName(teenName, 'teenName');
     });
 
 
@@ -447,6 +449,8 @@ $(document).ready(function(){
         $('.spinCategory').fadeOut();
         $('.waitingForParent').fadeOut();
         $('.waitingForTeen').fadeOut();
+        $('.waitingForTeenToJoin').fadeOut();
+        $('.waitingForTeenToChooseGame').fadeOut();
         $('.inputInformation').fadeOut();
         $('.missingDigitScreen').fadeOut();
         $('.balanceScreen').fadeOut();
@@ -504,6 +508,15 @@ $(document).ready(function(){
             $('.ball-hidden').hide();
         }
     };
+
+    // Append name to waiting messages
+    function appendName(name, type) {
+        console.log(name);
+        console.log(type);
+        // Empty the name field and append name
+        $('.'+type).empty();
+        $('.'+type).html(name);
+    }
 
     // Append sub-categories to the category for parent to input cost
     function appendItem(category) {

@@ -172,7 +172,7 @@ exports.init = function(io) {
 
 			console.log("game " + r.getGame());
 			console.log(r);
-			io.sockets.connected[r.parentID].emit('waitForTeen');
+			io.sockets.connected[r.parentID].emit('waitingForTeenToChooseGame', {room: r});
 			if(r.getGame() == "digit") {
 				io.sockets.connected[r.teenID].emit('startDigit', {digits: r.digitArray, missing: r.missingId, per: r.per, category: r.category, item: r.item});
 			} else if(r.getGame() == "bonkers") {
@@ -197,14 +197,14 @@ exports.init = function(io) {
 			// if(data.guess == r.digitArray[r.missingId]) {
 			console.log("missing digit actual cost: "+r.cost);
 			if(data.guess == r.cost) {
-				io.sockets.connected[r.teenID].emit('teenWin', {id: r.teenID, playerType: 'teen', room: r});
-				io.sockets.connected[r.parentID].emit('teenWin', {id: r.parentID, playerType: 'parent', room: r});
 				// Call score counter
 				scoreCounter(r.teenID, "teen", r);
+				io.sockets.connected[r.teenID].emit('teenWin', {id: r.teenID, playerType: 'teen', room: r});
+				io.sockets.connected[r.parentID].emit('teenWin', {id: r.parentID, playerType: 'parent', room: r});
 			} else {
+				scoreCounter(r.parentID, "parent", r);
 				io.sockets.connected[r.teenID].emit('parentWin', {id: r.teenID, playerType: 'teen', room: r});
 				io.sockets.connected[r.parentID].emit('parentWin', {id: r.parentID, playerType: 'parent', room: r});
-				scoreCounter(r.parentID, "parent", r);
 			}
 		});
 
@@ -279,7 +279,7 @@ exports.init = function(io) {
 			}
 			if(data.playerType == "parent"){
 				// Wait for teen to enter and choose a game
-				io.sockets.connected[r.parentID].emit('waitForTeen');
+				io.sockets.connected[r.parentID].emit('waitingForTeenToChooseGame', {room: r});
 				//io.sockets.connected[r.parentID].emit('choseCategory');
 			} else {
 				io.sockets.connected[r.teenID].emit('choseGame', {room: r});
