@@ -1,5 +1,7 @@
 # Financial-Services-Literacy-Project
 
+dbp2.apt.ri.cmu.edu:8080
+
 Notes on testing it locally
 - Open 2 terminal windows, one for node server and one for mongodb
 - In 1 window: cd to directory: /data/db
@@ -17,13 +19,29 @@ Notes on editing stylesheets
 
 
 Notes on testing it on a server
-- Copy files from local to server
-scp -r /Users/vitachen/Documents/FL2016/is/Financial-Services-Literacy-Project/mobile kezhouc@dbp2.apt.ri.cmu.edu:~/
-- Log into the server
-ssh kezhouc@dbp2.apt.ri.cmu.edu   (password: kezhouc)
 - Install node.js and mongodb
 https://www.liquidweb.com/kb/how-to-install-node-js-on-fedora-23/
 http://www.liquidweb.com/kb/how-to-install-nvm-node-version-manager-on-fedora-23/
 https://github.com/creationix/nvm
 
-- PASSWD
+- Copy files from local to server (must be on the local to do this)
+scp -r local/file/path username@dbp2.apt.ri.cmu.edu:~/
+
+- Log into the server
+ssh <username>@dbp2.apt.ri.cmu.edu
+
+- Config the IP address and port number 
+nslookup dbp2.apt.ri.cmu.edu  // look up the IP address
+- Start the server
+
+- Use screen to keep the server alive forever
+screen -S proceeName
+(control + A, then d to quit from the screen session)
+screen -ls 
+<detach the session once it’s created>
+screen -r processName
+<kill a screen session>
+screen -X -S processName quit
+
+- Find session
+ps -ef | grep node
