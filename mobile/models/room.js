@@ -10,6 +10,7 @@ function Room(id) {
 	this.item;
 	this.cost;
 	this.per;
+	this.teenGuess;
 
 	// variables for Missing Digit
 	this.digitArray;

@@ -202,6 +202,9 @@ exports.init = function(io) {
 				}
 			}
 
+			r.teenGuess = null;
+			r.teenGuess = "$" + data.guess;
+
 			// if(data.guess == r.digitArray[r.missingId]) {
 			console.log("missing digit actual cost: "+r.cost);
 			if(data.guess == r.cost) {
@@ -229,6 +232,15 @@ exports.init = function(io) {
 			}
 			var level = data.guess;
 			console.log(level);
+			r.teenGuess = null;
+			if (level == "up") {
+				r.teenGuess = "more than $" + r.guess;
+			} else {
+				r.teenGuess = "less than $" + r.guess;
+			}
+			console.log(r);
+			console.log(r.teenGuess);
+
 			if(((level == "up") && (r.guess < r.cost)) || ((level == "down") && (r.guess > r.cost))) {
 				io.sockets.connected[r.teenID].emit('teenWin', {id: r.teenID, playerType: 'teen', room: r});
 				io.sockets.connected[r.parentID].emit('teenWin', {id: r.parentID, playerType: 'parent', room: r});
@@ -262,6 +274,10 @@ exports.init = function(io) {
 			if(data.three) {
 				sum += r.val[2];
 			}
+
+			r.teenGuess = null;
+			r.teenGuess = "$" + sum+r.displayVal;
+
 			if((sum+r.displayVal) == r.cost) {
 				io.sockets.connected[r.teenID].emit('teenWin', {id: r.teenID, playerType: 'teen', room: r});
 				io.sockets.connected[r.parentID].emit('teenWin', {id: r.parentID, playerType: 'parent', room: r});

@@ -271,7 +271,11 @@ $(document).ready(function(){
 	// });
 
 	socket.on('parentWin', function (data) {
+        $('.guessAns').empty();
+        $('.correctAns').empty();
         $('.gameover_msg').empty();
+        $('.guessAns').html(data.room['teenGuess']);
+        $('.correctAns').html(data.room['cost']);
 		$('.parentWin').modal('show');
         var msg = createMsg(data.playerType, "parentWin");
         $('.gameover_msg').append(msg);
@@ -280,7 +284,11 @@ $(document).ready(function(){
 	});
 
 	socket.on('teenWin', function (data) {
+        $('.guessAns').empty();
+        $('.correctAns').empty();
         $('.gameover_msg').empty();
+        $('.guessAns').html(data.room['teenGuess']);
+        $('.correctAns').html(data.room['cost']);
 		$('.teenWin').modal('show');
         var msg = createMsg(data.playerType, "teenWin");
         $('.gameover_msg').append(msg);
