@@ -160,7 +160,7 @@ exports.init = function(io) {
 					// balance
 					var tempCost = data.cost;
 					console.log("tempCost: "+tempCost);
-					rooms[i].displayVal = tempCost % 10;
+					rooms[i].displayVal = tempCost % 31;
 					console.log("balance displayVal: "+rooms[i].displayVal);
 					tempCost = tempCost - rooms[i].displayVal;
 
@@ -170,7 +170,7 @@ exports.init = function(io) {
 					while(rooms[i].val[2] == rooms[i].val[0]) {
 						rooms[i].val[2] = Math.floor((Math.random() * (data.cost-1) + 1));	
 					}
-					// shuffle the array
+					// shuffle the balance array
 					console.log(rooms[i].val)
 					shuffle(rooms[i].val);
 					console.log(rooms[i].val);
