@@ -150,6 +150,7 @@ exports.init = function(io) {
 					// bonker choice will be up/down within 30% of the original number
 					console.log("bonkers");
 					var guess_tmp = Math.floor((Math.random() * (data.cost*1.3)) + data.cost*0.7);
+					console.log(guess_tmp);
 					rooms[i].guess = Math.round(guess_tmp / 100) * 100;
 					// Make sure that he guess cost is not equal to the actual cost
 					while (rooms[i].guess == data.cost) {

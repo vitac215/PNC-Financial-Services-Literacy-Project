@@ -93,6 +93,7 @@ $(document).ready(function(){
     $('#home').click(function () {
         // Clear the category
         $('#category').empty();
+        $('#costFor').empty();
         $('.chooseCategoryNote').hide();
     	$('.spinCategory').fadeOut();
     	$('#category').append("Home");
@@ -106,6 +107,8 @@ $(document).ready(function(){
     $('#travel').click(function () {
         // Clear the category
         $('#category').empty();
+        $('#costFor').empty();
+        $('#costFor').html("the entire family");
         $('.chooseCategoryNote').show();
         $('.spinCategory').fadeOut();
         $('#category').append("Travel");
@@ -119,6 +122,8 @@ $(document).ready(function(){
     $('#fun').click(function () {
         // Clear the category
         $('#category').empty();
+        $('#costFor').empty();
+        $('#costFor').html("the entire family");
         $('.chooseCategoryNote').show();
         $('.spinCategory').fadeOut();
         $('#category').append("Fun");
@@ -132,6 +137,8 @@ $(document).ready(function(){
     $('#shopping').click(function () {
         // Clear the category
         $('#category').empty();
+        $('#costFor').empty();
+        $('#costFor').html("the teen");
         $('.chooseCategoryNote').show();
         $('.spinCategory').fadeOut();
         $('#category').append("shopping");
@@ -145,6 +152,8 @@ $(document).ready(function(){
     $('#living_expenses').click(function () {
         // Clear the category
         $('#category').empty();
+        $('#costFor').empty();
+        $('#costFor').html("the entire family");
         $('.chooseCategoryNote').show();
         $('.spinCategory').fadeOut();
         $('#category').append("living expenses");
