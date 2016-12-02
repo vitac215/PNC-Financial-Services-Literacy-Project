@@ -52,7 +52,12 @@ require('./socketio/serverSocket.js').init(sio);
  * use default values of localhost (127.0.0.1) and 50000 (arbitrary).
  */
 
-var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "128.2.176.19";
-var port      = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+// For deporting 
+// var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "128.2.176.19";
+// var port      = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+
+// For local testing
+var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
+var port      = process.env.OPENSHIFT_NODEJS_PORT || 50000;
 
 httpServer.listen(port, ipaddress, function() {console.log('Listening on '+ipaddress+':'+port);});

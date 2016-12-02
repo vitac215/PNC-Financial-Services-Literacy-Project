@@ -78,6 +78,7 @@
 <!-- 			  	<button id="cliff" class="btn btn-info btn-lg" type="button">Cliff Hanger</button><br>
 			  	<button id="range" class="btn btn-info btn-lg" type="button">Range Game</button><br> -->
 			  	<button id="balance" class="btn btn-info btn-lg" type="button">Balance</button>
+			  	<div class="footer_msg"><h3><span class="parentName">Parent</span> is waiting for your to choose a game</h3></div>
 			  </div>
 			</div>
 
@@ -100,6 +101,7 @@
 			  	<button id="fun" class="btn btn-info btn-lg" type="button">Fun</button><br>
 			  	<button id="shopping" class="btn btn-info btn-lg" type="button">Shopping</button><br>
 			  	<button id="living_expenses" class="btn btn-info btn-lg" type="button">Living Expenses</button><br>
+			  	<div class="footer_msg"><h3><span class="teenName">Teen</span> is waiting for your to choose a category</h3></div>
 			  </div>
 			</div>
 
@@ -141,6 +143,7 @@
 			<div class="row">
 			  <div class="col-xs-12 col-md-4 col-centered">
 			  	<h3>Enter your expense on <span id="category" class="bold"></span></h3>
+			  	<p class="chooseCategoryNote">Note: Think of expense of <i>the entire family</i> on each category</p>
 			  	<div id = "categorySelect">
 			  	<h4>Sub-category:
 			  		<select id="item" name="item">
@@ -263,7 +266,7 @@
 					</div>
 			  	<div class="gameDescription">
 				  	<!-- Category: <span class="categoryNameBalance"></span><br> -->
-				  	<h5 class="directions">Select bags to guess the amount spent on <span class="subCategory"></span> per <span class="perValueBalance"></span></h5>
+				  	<h5 class="directions">Click on the ball(s) to put them on the scale to guess the amount spent on <span class="subCategory"></span> per <span class="perValueBalance"></span></h5>
 			  	</div><br>
 					<div class="balance-game-div">
 
@@ -274,13 +277,17 @@
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 164.83 132.62" class="balance-game-svg"><defs>
 						</defs>
 						<title>balance_1</title>
-						<g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1">
+						  <g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1">
 						  <line id="_Path_" data-name="&lt;Path&gt;" class="balance-line" x1="82.41" y1="18.53" x2="82.41" y2="98.76"/>
 						  <line id="_Path_2" data-name="&lt;Path&gt;" class="balance-line" y1="98.76" x2="164.83" y2="98.76"/>
 
 						  <g id="ball-solution" class="ball-static" data-name="&lt;Group&gt;">
-						    <circle data-name="&lt;Path&gt;" class="cls-2" cx="132.64" cy="45.12" r="16.89"/>
-						    <text id="ball-solution-text" class="ball-text" transform="translate(122.97 48.83)"></text>
+						    <circle data-name="&lt;Path&gt;" class="cls-2" cx="120.64" cy="50" r="12"/>
+						    <circle data-name="&lt;Path&gt;" class="cls-2" cx="145" cy="50" r="12"/>
+						    <circle data-name="&lt;Path&gt;" class="cls-2" cx="132.64" cy="30" r="12"/>
+						    <text id="ball-solution-text" class="ball-text-lg" transform="translate(117 54)"></text>
+						    <text id="ball-solution-text" class="ball-text-lg" transform="translate(141.5 54)"></text>
+						    <text id="ball-solution-text" class="ball-text-lg" transform="translate(129 35)"></text>
 						  </g>
 
 						  <g id="_Group_2" data-name="&lt;Group&gt;">
