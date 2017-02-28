@@ -6,8 +6,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": {
-    "name": "Weikun Liang",
-    "email": "weikunl@andrew.cmu.edu"
+    "name": "Weikun Liang", "Vita Chen"
+    "email": "weikunl@andrew.cmu.edu", "kezhouc@andrew.cmu.edu"
   },
   "engines": {
     "node": ">= 0.6.0",
